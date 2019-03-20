@@ -38,3 +38,14 @@ If you want to change this behavior and allow DOSBox-X to access your regular
 home directory, you can manually override the permissions with:
 
     flatpak override --user --filesystem=home com.github.joncampbell123.DOSBox-X
+
+# CONFIGURATION #
+If you want to write a dosbox.conf with default settings to ~/dosbox.conf,
+start up DOSBox-X, then enter
+
+    config -all -wc dosbox.conf
+    
+To edit the file, open a Shell inside the sandbox and edit it with nano:
+
+    flatpak run --command=sh com.github.johncampbell123.DOSBox-X
+    nano ~/dosbox.conf
