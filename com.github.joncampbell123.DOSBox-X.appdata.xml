@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.github.joncampbell123.DOSBox-X.desktop</id>
+  <project_license>GPL-2.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>DOSBox-X</name>
+  <summary>x86/DOS emulator with sound and graphics</summary>
+  <description>
+	<p>DOSBox-X is a fork of the original DOSBox project (www.dosbox.com)</p>
+  </description>
+  <url type="homepage">https://github.com/joncampbell123/dosbox-x</url>
+  <releases>
+    <release version="0.82.16" date="2019-03-01"/>
+  </releases>
+</component>

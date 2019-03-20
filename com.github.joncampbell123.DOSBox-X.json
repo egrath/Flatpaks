@@ -1,0 +1,54 @@
+{
+    "app-id": "com.github.joncampbell123.DOSBox-X",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=pulseaudio",
+	"--persist=.",
+	"--persist=.dosbox"
+    ],
+    "command": "dosbox-x",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        {
+            "name": "dosbox-x",
+            "buildsystem": "autotools",
+	    "config-opts": [ "--enable-sdl2" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.16.tar.gz",
+                    "sha256": "48ed04d08b4fd8cd8d388048280c4d98f9f202ea996d4b14c340e68693406c77"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.joncampbell123.DOSBox-X.png"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.joncampbell123.DOSBox-X.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.joncampbell123.DOSBox-X.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.joncampbell123.DOSBox-X.appdata.xml /app/share/appdata/com.github.joncampbell123.DOSBox-X.appdata.xml",
+                "install -Dm644 com.github.joncampbell123.DOSBox-X.desktop /app/share/applications/com.github.joncampbell123.DOSBox-X.desktop",
+                "install -Dm644 com.github.joncampbell123.DOSBox-X.png /app/share/icons/hicolor/256x256/apps/com.github.joncampbell123.DOSBox-X.png"
+            ]
+        }
+    ]
+}
