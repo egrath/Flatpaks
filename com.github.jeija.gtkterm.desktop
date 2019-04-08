@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GtkTerm
+Comment=A serial terminal emulator for GTK
+Exec=gtkterm
+Icon=com.github.jeija.gtkterm
+Terminal=false
+Type=Application
+Categories=System
+
