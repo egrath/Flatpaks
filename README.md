@@ -1,3 +1,10 @@
+# GETTING #
+
+    git clone https://github.com/egrath/freedroid-flatpak.git
+    git submodule init
+    git submodule update
+
+
 # BUILDING #
 
 **Build:**
@@ -10,7 +17,7 @@ Optionally, if something goes wrong, you can enter a shell in the build environm
 
 **Test run:**
 
-    flatpak-builder --run "build" "org.freedroid.classic.json" gtkterm
+    flatpak-builder --run "build" "org.freedroid.classic.json" freedroid
 
 
 # INSTALLING #
@@ -18,7 +25,6 @@ Optionally, if something goes wrong, you can enter a shell in the build environm
 **Export to local repository:**
 
     flatpak-builder --repo="repo" --force-clean "build" "org.freedroid.classic.json"
-
 
 **Add local repository to flatpak repository database:**
 
