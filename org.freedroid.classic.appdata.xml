@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.freedroid.classic</id>
+  <project_license>GPL-2.0</project_license>
+  <name>Freedroid Classic</name>
+  <summary>A remake of the classic Commodore 64 game</summary>
+  <description>
+	<p>
+	The game is set on a spaceship viewed from a top-down perspective. The ship consists of numerous rooms and levels, each one populated by hostile robots or "droids". The player, in control of a special droid called the "Influence Device", must destroy all the other droids on the ship. Each droid (including the player) is represented as a circle around a three-digit number. The numbers roughly correspond to the droid's "power" or "level", in that higher-numbered droids are tougher to destroy. The Influence Device is numbered "001". The primary way in which the Influence Device destroys other droids is by "linking" with them, effectively taking them over. When the player takes over another droid, the previously-controlled droid is destroyed.
+	</p>
+  </description>
+  <url type="homepage">http://www.freedroid.org</url>
+  <releases>
+    <release version="1.0.2" date="2003-08-11"/>
+  </releases>
+</component>
+
