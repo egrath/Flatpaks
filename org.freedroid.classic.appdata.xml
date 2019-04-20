@@ -2,6 +2,7 @@
 <component type="desktop">
   <id>org.freedroid.classic</id>
   <project_license>GPL-2.0</project_license>
+  <metadata_license>GPL-2.0</metadata_license>
   <name>Freedroid Classic</name>
   <summary>A remake of the classic Commodore 64 game</summary>
   <description>

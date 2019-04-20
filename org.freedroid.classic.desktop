@@ -2,8 +2,8 @@
 Name=Freedroid Classic
 Comment=A remake of the classic Commodore 64 game
 Exec=freedroid
-Icon=org.freedroid.classic.png
+Icon=org.freedroid.classic
 Terminal=false
 Type=Application
-Categories=Games
+Categories=Game
 
