@@ -21,14 +21,23 @@
         "shared-modules/SDL/SDL-1.2.15.json",
         "shared-modules/SDL/SDL_image-1.2.12.json",
         {
+            "name": "SDL_gfx",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/sdlgfx/SDL_gfx-2.0.25.tar.gz",
+                    "sha256": "556eedc06b6cf29eb495b6d27f2dcc51bf909ad82389ba2fa7bdc4dec89059c0"
+                }
+	    ]
+	},
+        {
             "name": "freedroid-classic",
             "buildsystem": "autotools",
             "sources":
             [
                 {
-                    "type": "archive",
-                    "url": "https://netcologne.dl.sourceforge.net/project/freedroid/freedroidClassic/FreedroidClassic-1.0.2/freedroid-1.0.2.tar.gz",
-                    "sha256": "0934bd29fb2ad0367ea3bdfdce47537179f9af6aa960cbcc897c40da2e1a0ee3"
+                    "type": "git",
+                    "url": "https://github.com/ReinhardPrix/FreedroidClassic.git"
                 },
                 {
                     "type": "file",
