@@ -1,5 +1,5 @@
 # Logisim Evolution Flatpak
-![Screenshot](https://github.com/egrath/logisim-flatpak/master/logisim-screenshot-01.jpg
+![Screenshot](https://raw.githubusercontent.com/egrath/logisim-flatpak/master/logisim-screenshot-01.jpg)
 
 This serves two purposes:
 - Having Logisim-Evolution available as a Flatpak
