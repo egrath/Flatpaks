@@ -1,6 +1,6 @@
 # Nomacs Image viewer Flatpak build
 
-![Screenshot](https://raw.githubusercontent.com/egrath/nomacs-flatpak/master/nomacs_screenshot_01.png)
+![Screenshot](https://raw.githubusercontent.com/egrath/nomacs-flatpak/master/nomacs_screenshot_01.jpg)
 
 **Build it**
 ```
