@@ -1,5 +1,7 @@
 # Nomacs Image viewer Flatpak build
 
+![Screenshot](https://raw.githubusercontent.com/egrath/nomacs-flatpak/master/nomacs_screenshot_01.png)
+
 **Build it**
 ```
 flatpak-builder --force-clean --install-deps-from=flathub --keep-build-dirs build com.github.nomacs.json
