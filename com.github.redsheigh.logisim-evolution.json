@@ -1,0 +1,67 @@
+{
+  "app-id": "com.github.redsheigh.logisim-evolution",
+  "branch": "2.15.0",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "18.08",
+  "sdk": "org.freedesktop.Sdk",
+  "sdk-extensions": [
+      "org.freedesktop.Sdk.Extension.openjdk"
+  ],
+  "command": "logisim-evolution.sh",
+  "finish-args": [
+      "--persist=.java",
+      "--share=ipc",
+      "--socket=x11",
+      "--socket=wayland",
+      "--filesystem=home"
+  ],
+  "modules": [
+      {
+          "name" : "openjdk",
+          "buildsystem" : "simple",
+          "build-commands" : [ "/usr/lib/sdk/openjdk/install.sh" ]
+      },
+      {
+          "name": "logisim-evolution",
+          "no-autogen": true,
+          "sources" : [
+              {
+                  "type": "file",
+                  "url": "https://github.com/reds-heig/logisim-evolution/releases/download/v2.15.0/logisim-evolution.jar",
+                  "sha256": "2d56d01a692e26dd2e5c19a6139ed66d9352fb4bc2c81171b2153b9099cfd91d"
+              },
+              {
+                  "type": "file",
+                  "path": "logisim-evolution.sh"
+              },
+              {
+                  "type": "file",
+                  "path": "logisim-evolution.makefile",
+                  "dest-filename": "Makefile"
+              }
+          ]
+      },
+      {
+          "name": "logisim-evolution-desktop-integration",
+          "buildsystem": "simple",
+          "build-commands": [
+              "echo Installing desktop integration files"
+          ],
+          "sources": [
+              {
+                  "type": "file",
+                  "path": "com.github.redsheigh.logisim-evolution.desktop"
+              },
+              {
+                  "type": "file",
+                  "path": "com.github.redsheigh.logisim-evolution.png"
+              }
+          ],
+          "post-install": [
+              "install -Dm644 com.github.redsheigh.logisim-evolution.desktop /app/share/applications/com.github.redsheigh.logisim-evolution.desktop",
+              "install -Dm644 com.github.redsheigh.logisim-evolution.png /app/share/icons/hicolor/256x256/apps/com.github.redsheigh.logisim-evolution.png"
+          ]
+      }
+  ]
+}
+
