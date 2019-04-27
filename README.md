@@ -28,3 +28,9 @@ flatpak remote-add --no-gpg-verify --user nomacs-repository repo
 flatpak install --user --assumeyes nomacs-repository com.github.nomacs
 ```
 ... or use the software center if you prefer the graphical approach
+
+**Optionally, if you want to create a .flatpak**
+```
+flatpak build-bundle repo nomacs312.flatpak com.github.nomacs 3.12
+```
+
