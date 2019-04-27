@@ -84,6 +84,11 @@
                     "type": "archive",
                     "url": "https://github.com/nomacs/nomacs/archive/3.12.tar.gz",
                     "sha256": "f4a32169e6c0cb939971da2732e4d67c6e2e649506da1b55bfc94963a26280ff"
+                },
+                {
+                    "type": "patch",
+                    "path": "nomacs.patch",
+                    "strip-components": 0
                 }
             ]
         },
