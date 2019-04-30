@@ -23,7 +23,7 @@ flatpak install --user mc-repository org.midnightcommander.mc
 **Usage**
 I highly recommend to add the following two commands to your profile:
 ```
-export TERM=linux
+export TERM=xterm
 alias mc="flatpak run org.midnightcommander.mc"
 ```
 This way, you get:
