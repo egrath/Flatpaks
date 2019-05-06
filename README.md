@@ -2,6 +2,8 @@
 
 This is a Flatpak wrapper for running the AppImage build provided by Ultimaker under supported x64 Operating Systems like Endless.
 
+![Screenshot](https://raw.githubusercontent.com/egrath/cura-flatpak/master/cura_screenshot_01.jpg)
+
 ## Instructions
 
 There are two ways of running Ultimaker as a Flatpak:
