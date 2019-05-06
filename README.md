@@ -34,6 +34,10 @@ This step is not necessary regulary, it will create the .flatpak for offline dep
 ```
 flatpak build-bundle repo cura-4.flatpak com.github.ultimaker.cura 4.0.0
 ```
+The resulting .flatpak file can be installed with:
+```
+flatpak install --user cura-4.flatpak
+```
 
 ## FAQ
 - Original sources: https://github.com/Ultimaker/Cura
