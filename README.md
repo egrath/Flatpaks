@@ -1,4 +1,4 @@
-# GETING #
+# GETTING #
 
 ```
 git clone https://github.com/egrath/dosbox-x-flatpak.git
@@ -45,6 +45,14 @@ flatpak remote-add --user --no-gpg-verify "dosbox-x" "repo"
 
 ```
 flatpak install --user dosbox-x com.github.joncampbell123.DOSBox-X
+```
+
+**Build Bundle:**
+
+If you want to create a bundle for distribution:
+
+```
+flatpak build-bundle repo dosbox_0_82_18.flatpak com.github.joncampbell123.DOSBox-X 0.82.18
 ```
 
 # DIRECTORIES AND PERMISSIONS #
