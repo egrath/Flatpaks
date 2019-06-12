@@ -1,0 +1,73 @@
+{
+    "id": "com.github.trufanovnok.scantailor",
+    "branch": "0.2.6",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.12",
+    "sdk": "org.kde.Sdk",
+    "command": "scantailor",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--filesystem=home"
+    ],
+    "build-options": {
+        "no-debuginfo": true
+    },
+    "modules": [
+        {
+            "name": "boost",
+            "config-opts": [],
+            "cleanup": [
+                "/lib/libboost_*.a",
+                "/lib/debug",
+                "/include/boost"
+             ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.bz2",
+                    "sha256": "8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406"
+                },
+                {
+                    "type": "file",
+                    "path": "boost-configure",
+                    "dest-filename": "configure"
+                }
+            ]
+        },
+        {
+            "name": "scantailor-universal",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/trufanov-nok/scantailor/archive/0.2.6.tar.gz",
+                    "sha256": "f72bb54b9f6e4347586da9a805c8c032dbe2b3cb5f5274a692b5d6449dd8e586"
+                }
+            ]
+        },
+        {
+            "name": "scantailor-universal-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.trufanovnok.scantailor.svg"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.trufanovnok.scantailor.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm755 com.github.trufanovnok.scantailor.desktop /app/share/applications/com.github.trufanovnok.scantailor.desktop",
+                "install -Dm644 com.github.trufanovnok.scantailor.svg /app/share/icons/hicolor/256x256/apps/com.github.trufanovnok.scantailor.svg"
+            ]
+        }
+    ]
+}

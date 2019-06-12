@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=ScanTailor-Universal
+Type=Application
+Exec=scantailor
+Icon=com.github.trufanovnok.scantailor.svg
+Categories=Graphics;Office
+
