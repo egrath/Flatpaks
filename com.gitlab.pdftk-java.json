@@ -1,0 +1,49 @@
+{
+    "id": "com.gitlab.pdftk-java",
+    "branch": "master",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "sdk-extensions" : [ "org.freedesktop.Sdk.Extension.openjdk" ],
+    "command": "pdftk",
+    "finish-args": [
+        "--filesystem=home",
+        "--env=PATH=/app/bin:/app/jre/bin:/usr/bin"
+    ],
+    "cleanup": [
+        "/lib/debug",
+        "/include"
+    ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true   
+    },
+    "modules": [
+        {
+            "name": "openjdk",
+            "buildsystem": "simple",
+            "build-commands": [
+                "/usr/lib/sdk/openjdk/install.sh"
+            ]
+        },
+        {
+            "name": "pdftk-java",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 pdftk-all.jar /app/bin/pdftk-all.jar",
+                "install -Dm755 pdftk /app/bin/pdftk"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://gitlab.com/pdftk-java/pdftk/-/jobs/224965894/artifacts/raw/build/libs/pdftk-all.jar",
+                    "sha256": "5948dd3114f66d555ae7d0ad0e1559c43c9975948add58930a61b34374c47c34"
+                },
+                {
+                    "type": "file",
+                    "path": "pdftk"
+                }
+            ]
+        }
+    ]
+}
