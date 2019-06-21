@@ -14,10 +14,18 @@ Add the needed repository:
 flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.flatpakrepo
 ```
 
+Install the needed Platform:
+
+```
+flatpak install --assumeyes winepak org.winepak.Platform.Wine//3.10-staging
+flatpak install --assumeyes winepak org.winepak.Platform.Wine.Compat32//3.10-staging
+flatpak install --assumeyes winepak org.winepak.Platform.Extension.d3dx9
+```
+
 Clone this repository, build it and install it:
 ```
-flatpak-builder --force-clean --install-deps-from=flathub --install-deps-from=winepak --repo=repo build com.microsoft.winfile.json
-flatpak build-bundle repo winfile.flatpak com.microsoft.winfile master
+flatpak-builder --arch=i386 --force-clean --install-deps-from=flathub --install-deps-from=winepak --repo=repo build com.microsoft.winfile.json
+flatpak build-bundle --arch=i386 repo winfile.flatpak com.microsoft.winfile master
 flatpak install --user --assumeyes winfile.flatpak
 ```
 
@@ -35,7 +43,7 @@ Q: How to run winecfg?
 
 A: 
 ```
-flatpak run --command=/app/lib/32bit/bin/winecfg com.microsoft.winfile
+flatpak run --command=winecfg com.microsoft.winfile
 ```
 
 Q: How to run winetricks?
@@ -57,12 +65,12 @@ Q: I dislike the Microsoft WinFile, can i use Wine's explorer?
 
 A: 
 ```
-flatpak run --command="/app/lib/32bit/bin/wine" com.microsoft.winfile explorer
+flatpak run --command=wine com.microsoft.winfile explorer
 ```
 
 Q: Can i directly run installed applications?
 
 A:
 ```
-flatpak run --command="/app/lib/32bit/bin/wine" com.microsoft.winfile "C:/Program Files/Mathomir/Mathomir.exe"
+flatpak run --command="wine" com.microsoft.winfile "C:/Program Files/Mathomir/Mathomir.exe"
 ```

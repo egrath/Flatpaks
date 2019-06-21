@@ -14,6 +14,23 @@
             "version": "3.0",
             "add-ld-path": "lib",
             "no-autodownload": false
+        },
+        "org.winepak.Platform.Wine": {
+            "directory": "lib/wine",
+            "version": "3.10-staging",
+            "add-ld-path": "lib",
+            "no-autodownload": false
+        },
+        "org.winepak.Platform.Wine.Compat32": {
+            "directory": "lib/wine-32bit",
+            "version": "3.10-staging",
+            "add-ld-path": "lib",
+            "no-autodownload": false
+        },
+        "org.winepak.Platform.Extension.d3dx9": {
+            "directory": "lib/extension/d3dx9",
+            "version": "3.0",
+            "no-autodownload": true
         }
     },
     
@@ -37,6 +54,20 @@
             ]
         },
         {
+            "name": "setup-wine",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/wine"
+            ]
+        },
+        {
+            "name": "setup-wine-compat32",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/wine-32bit"
+            ]
+        },
+        {
             "name": "winfile",
             "buildsystem": "simple",
             "build-commands": [
@@ -55,8 +86,8 @@
                     "dest-filename": "winfile",
                     "commands": [
                         "export WINEARCH=win32",
-                        "/app/lib/32bit/bin/wineboot",
-                        "/app/lib/32bit/bin/wine /app/bin/winfile.exe"
+                        "wineboot",
+                        "wine /app/bin/winfile.exe"
                     ]
                 }
             ]
