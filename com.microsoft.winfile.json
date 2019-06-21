@@ -1,0 +1,87 @@
+{
+    "app-id": "com.microsoft.winfile",
+    "branch": "master",
+    
+    "runtime": "org.winepak.Platform",
+    "runtime-version": "3.0",
+    "sdk": "org.winepak.Sdk",
+    
+    "command": "winfile",
+    
+    "add-extensions": {
+        "org.winepak.Platform.Compat32": {
+            "directory": "lib/32bit",
+            "version": "3.0",
+            "add-ld-path": "lib",
+            "no-autodownload": false
+        }
+    },
+    
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--share=network",
+        "--device=dri",
+        "--allow=multiarch",
+        "--filesystem=home"
+    ],
+    
+    "modules": [
+        {
+            "name": "setup-compat32",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/32bit",
+                "ln -s /app/lib/32bit/lib/ld-linux.so.2 /app/lib/ld-linux.so.2"
+            ]
+        },
+        {
+            "name": "winfile",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -d /app/bin",
+                "install -d /app/extra",
+                "install -Dm755 winfile /app/bin/winfile",
+                "install -Dm755 winfile.exe /app/bin/winfile.exe"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "winfile.exe"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "winfile",
+                    "commands": [
+                        "export WINEARCH=win32",
+                        "/app/lib/32bit/bin/wineboot",
+                        "/app/lib/32bit/bin/wine /app/bin/winfile.exe"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "winfile-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.microsoft.winfile.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.microsoft.winfile.svg"
+                }
+            ],
+            "post-install": [
+                "install -Dm755 com.microsoft.winfile.desktop /app/share/applications/com.microsoft.winfile.desktop",
+                "install -Dm644 com.microsoft.winfile.svg /app/share/icons/hicolor/256x256/apps/com.microsoft.winfile.svg"
+            ]
+        }
+    ]
+}
+

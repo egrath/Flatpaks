@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Winfile32
+Type=Application
+Icon=com.microsoft.winfile
+Exec=winfile
+Categories=System
+Description=Microsoft Windows File Manager, 32-bit version
