@@ -12,7 +12,7 @@ Add the needed repository:
 
 ```
 flatpak remote-add --if-not-exists winepak https://dl.winepak.org/repo/winepak.flatpakrepo
-``
+```
 
 Clone this repository, build it and install it:
 ```
