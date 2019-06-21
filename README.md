@@ -40,37 +40,27 @@ Known limitations:
 
 # FAQ # 
 Q: How to run winecfg?
-
-A: 
 ```
 flatpak run --command=winecfg com.microsoft.winfile
 ```
 
 Q: How to run winetricks?
-
-A:
 ```
 flatpak run --command=winetricks com.microsoft.winfile
 ```
 
 Q: How to enable font smoothing?
-
-A: 
 ```
 flatpak run --command=sh com.microsoft.winfile
 winetricks settings fontsmooth=rgb
 ```
 
 Q: I dislike the Microsoft WinFile, can i use Wine's explorer?
-
-A: 
 ```
 flatpak run --command=wine com.microsoft.winfile explorer
 ```
 
 Q: Can i directly run installed applications?
-
-A:
 ```
 flatpak run --command="wine" com.microsoft.winfile "C:/Program Files/Mathomir/Mathomir.exe"
 ```
