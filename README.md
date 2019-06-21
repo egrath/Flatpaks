@@ -1,6 +1,10 @@
 # What is it #
 
-A simple wrapper for running Microsoft's Windows File Manager under Wine as a Flatpak
+A simple wrapper for running Microsoft's Windows File Manager under Wine as a Flatpak.
+
+Example, running WinFile and 7-Zip:
+
+![Screenshot](https://raw.githubusercontent.com/egrath/winfile-flatpak/master/com.microsoft.winfile.screenshot.png)
 
 # Installing #
 
