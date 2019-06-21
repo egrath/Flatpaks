@@ -1,0 +1,70 @@
+{
+    "app-id": "fr.ujfgrenoble.xcas",
+    "branch": "1.5",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "xcas",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--filesystem=home"
+    ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "cleanup": [
+        "/lib/debug",
+        "/include"
+    ],
+    "modules": [
+        {
+            "name": "fltk",            
+            "config-opts": [
+                "--enable-shared",
+                "--enable-xrender=no",
+                "--enable-xinerama=no"                
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.fltk.org/pub/fltk/1.3.5/fltk-1.3.5-source.tar.bz2",
+                    "sha256": "2933c72400f9e7c0f4c3a81a1ce98bc9582b2a3edc44b8597ccd26e240e32c3c"
+                }
+            ]
+        },
+        {
+            "name": "xcas",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www-fourier.ujf-grenoble.fr/~parisse/giac/giac_stable.tgz",
+                    "sha256": "905356675b4a4d59883f388d2d3b30f7d5a83d603a2e2d869fd09d83f1fd1b14"
+                }
+            ]
+        },
+        {
+            "name": "xcas-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "fr.ujfgrenoble.xcas.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "fr.ujfgrenoble.xcas.svg"
+                }
+            ],
+            "post-install": [
+                "install -Dm755 fr.ujfgrenoble.xcas.desktop /app/share/applications/fr.ujfgrenoble.xcas.desktop",
+                "install -Dm644 fr.ujfgrenoble.xcas.svg /app/share/icons/hicolor/256x256/apps/fr.ujfgrenoble.xcas.svg"
+            ]
+        }
+    ]
+}
