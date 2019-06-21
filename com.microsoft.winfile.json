@@ -31,6 +31,11 @@
             "directory": "lib/extension/d3dx9",
             "version": "3.0",
             "no-autodownload": true
+        },
+        "org.winepak.Platform.Extension.corefonts": {
+            "directory": "lib/extension/corefonts",
+            "version": "3.0",
+            "no-autodownload": true
         }
     },
     
@@ -41,7 +46,9 @@
         "--share=network",
         "--device=dri",
         "--allow=multiarch",
-        "--filesystem=home"
+        "--filesystem=home",
+        "--env=MESA_GLTHREAD=true",
+        "--env=__GL_THREADED_OPTIMIZATIONS=1"
     ],
     
     "modules": [
@@ -68,6 +75,14 @@
             ]
         },
         {
+            "name": "setup",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/extension/d3dx9",
+                "mkdir -p /app/lib/extension/corefonts"
+            ]
+        },
+        {
             "name": "winfile",
             "buildsystem": "simple",
             "build-commands": [
@@ -87,6 +102,8 @@
                     "commands": [
                         "export WINEARCH=win32",
                         "wineboot",
+                        "wine reg add 'HKEY_CURRENT_USER\Software\Wine\Direct3D' /v UseGLSL /d enabled /f",
+                        "wine reg add 'HKEY_CURRENT_USER\Software\Wine\Direct3D' /v csmt /d on /f",
                         "wine /app/bin/winfile.exe"
                     ]
                 }

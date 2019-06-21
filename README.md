@@ -20,6 +20,7 @@ Install the needed Platform:
 flatpak install --assumeyes winepak org.winepak.Platform.Wine//3.10-staging
 flatpak install --assumeyes winepak org.winepak.Platform.Wine.Compat32//3.10-staging
 flatpak install --assumeyes winepak org.winepak.Platform.Extension.d3dx9
+flatpak install --assumeyes winepak org.winepak.Platform.Extension.corefonts
 ```
 
 Clone this repository, build it and install it:
