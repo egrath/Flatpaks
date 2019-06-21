@@ -5,7 +5,9 @@ It's a flatpak build of XCAS, a computer algebra system: https://www-fourier.ujf
 
 # Getting the sources #
 
+```
 git clone https://github.com/egrath/xcas-flatpak.git
+```
 
 # Building it #
 
