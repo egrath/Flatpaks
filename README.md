@@ -65,3 +65,7 @@ Q: Can i directly run installed applications?
 ```
 flatpak run --command="wine" com.microsoft.winfile "C:/Program Files/Mathomir/Mathomir.exe"
 ```
+
+Q: Where is my C: Drive located?
+A: ~/.var/app/com.microsoft.winfile/data/wine/drive_c
+
