@@ -1,6 +1,6 @@
 {
     "app-id": "com.github.joncampbell123.DOSBox-X",
-    "branch": "0.82.18",
+    "branch": "0.82.20",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
@@ -10,8 +10,9 @@
         "--share=network",
         "--socket=x11",
         "--socket=pulseaudio",
-	"--persist=.",
-	"--persist=.dosbox"
+	    "--persist=.",
+	    "--persist=.dosbox",
+        "--filesystem=home"
     ],
     "command": "dosbox-x",
     "cleanup": [
@@ -34,41 +35,15 @@
                 }
              ]
         },
-	    {
-	        "name": "SDL1",
-	        "buildsystem": "autotools",
-	        "config-opts": [ "--enable-static", "--disable-shared", "--disable-x11-shared", "--disable-video-x11-xrandr", "--disable-video-x11-vm", "--disable-video-x11-xv" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.16.tar.gz",
-                    "sha256": "48ed04d08b4fd8cd8d388048280c4d98f9f202ea996d4b14c340e68693406c77"
-                }
-	        ],
-            "subdir": "vs2015/sdl" 
-	    },
-	    {
-            "name": "SDLNET",
-	        "buildsystem": "autotools",
-	        "config-opts": [ "--enable-static", "--disable-shared" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.16.tar.gz",
-                    "sha256": "48ed04d08b4fd8cd8d388048280c4d98f9f202ea996d4b14c340e68693406c77"
-                }
-             ],
-             "subdir": "vs2015/sdlnet"
-	    },
         {
             "name": "dosbox-x",
             "buildsystem": "autotools",
-            "config-opts": [ "--enable-sdl", "--disable-sdl2", "--disable-debug", "--enable-core-inline", "--enable-avcodec" ],
+            "config-opts": [ "--enable-sdl2", "--disable-sdl", "--disable-debug", "--enable-core-inline", "--enable-avcodec" ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.18.tar.gz",
-                    "sha256": "2978f69f8f69c628cbd1c82df2e2a7d78868f22ce96db63a441fd55c0e451d91"
+                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.20.zip",
+                    "sha256": "bd60613c5d8f7bbfbadc66fad0c98d8b29ec0700ae190eaf1a8284620c567629"
                 },
                 {
                     "type": "file",
