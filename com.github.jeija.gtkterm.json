@@ -1,5 +1,6 @@
 {
     "app-id": "com.github.jeija.gtkterm",
+    "branch": "0.99.7",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.30",
     "sdk": "org.gnome.Sdk",
@@ -12,6 +13,10 @@
 	"--persist=."
     ],
     "command": "gtkterm",
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
     "cleanup": [
         "/include",
         "/lib/pkgconfig",
@@ -20,14 +25,26 @@
         "*.la", "*.a"
     ],
     "modules": [
+        {  
+            "name": "vte",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/vte/0.36/vte-0.36.5.tar.xz",
+                    "sha256": "c2c2ce9640f08b07667f1037862fe991081495446b735c0afb98f45e35b64edf"
+                }
+            ]
+        },
         {
             "name": "gtkterm",
             "buildsystem": "autotools",
             "rm-configure": true,
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/Jeija/gtkterm.git"
+                    "type": "archive",
+                    "url": "https://github.com/Jeija/gtkterm/archive/0.99.7.tar.gz",
+                    "sha256": "5eb0d2adb9fb5adc8a5947bdc37cfd846c120fdd0213bd4be1e5dd688c58e222"
                 },
 		{
                     "type": "file",
