@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=bsnes Emulator
+Exec=bsnes
+Icon=com.github.byuu.bsnes.png
+Categories=Game
