@@ -4,8 +4,13 @@ This is a Flatpak build of the famous bsnes Super Nintendo / Super Famicom Emula
 
 Developers site: https://github.com/byuu/bsnes
 
-To build it:
+## Dependencies ##
+```
+org.gnome.Platform//3.30
+org.gnome.Sdk//3.30
+```
 
+## Build ##
 ```
 ./build.sh
 ```
