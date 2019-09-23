@@ -21,3 +21,10 @@ this will yield a bsnes.flatpak file, which can be installed with:
 flatpak install --user bsnes.flatpak
 ```
 
+## Running ##
+
+If you intend to use Quark-Shaders, put them into
+
+```
+~/.config/bsnes/shaders
+```
