@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.joncampbell123.DOSBox-X",
-    "branch": "0.82.20",
+    "branch": "0.82.21",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "19.08",
     "sdk": "org.freedesktop.Sdk",
     "finish-args": [
         "--device=all",
@@ -10,8 +10,6 @@
         "--share=network",
         "--socket=x11",
         "--socket=pulseaudio",
-	    "--persist=.",
-	    "--persist=.dosbox",
         "--filesystem=home"
     ],
     "command": "dosbox-x",
@@ -22,6 +20,10 @@
         "/share/man",
         "*.la", "*.a"
     ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
     "modules": [
 	    "shared-modules/glu/glu-9.0.0.json",
         {
@@ -42,8 +44,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.20.zip",
-                    "sha256": "bd60613c5d8f7bbfbadc66fad0c98d8b29ec0700ae190eaf1a8284620c567629"
+                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.21.tar.gz",
+                    "sha256": "2b5ddf9fc86bd6ff55b3bfdc2984c87698939583e9f8956d552ae922eb4fcb3d"
                 },
                 {
                     "type": "file",
