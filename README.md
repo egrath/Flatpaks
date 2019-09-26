@@ -12,6 +12,8 @@ org.gnome.Sdk//3.30
 
 ## Build ##
 ```
+git submodule init
+git submodule update
 ./build.sh
 ```
 
