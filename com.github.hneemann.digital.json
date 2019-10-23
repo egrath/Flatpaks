@@ -1,0 +1,77 @@
+{
+  "app-id": "com.github.hneemann.digital",
+  "branch": "0.23",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "19.08",
+  "sdk": "org.freedesktop.Sdk",
+  "sdk-extensions": [
+      "org.freedesktop.Sdk.Extension.openjdk"
+  ],
+  "command": "Digital.sh",
+  "finish-args": [
+      "--persist=.java",
+      "--share=ipc",
+      "--share=network",
+      "--socket=x11",
+      "--socket=wayland",
+      "--filesystem=home"
+  ],
+  "modules": [
+        {
+            "name" : "openjdk",
+            "buildsystem" : "simple",
+            "build-commands" : [ "/usr/lib/sdk/openjdk/install.sh" ]
+        },
+        {
+            "name": "digital-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Building Desktop Integration",
+                "install -Dm755 com.github.hneemann.digital.desktop /app/share/applications/com.github.hneemann.digital.desktop",
+                "install -Dm755 com.github.hneemann.digital.png /app/share/icons/hicolor/128x128/apps/com.github.hneemann.digital.png"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.hneemann.digital.png"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.hneemann.digital.desktop"
+                }
+            ]
+        },
+        {
+            "name": "digital",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Building Digital",
+                "mkdir -p /app/bin",
+                "mkdir -p /app/share/Digital",
+                "install -Dm755 Digital.jar /app/bin/Digital.jar",
+                "install -Dm755 Digital.sh /app/bin/Digital.sh",
+                "cp -r docu /app/share/Digital",
+                "cp -r examples /app/share/Digital"
+            ],
+            "sources" : [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/hneemann/Digital/releases/download/v0.23/Digital.zip",
+                    "sha512": "174d5da3da83755d23b6e0716d989cdd10f60652bbbec31354873497b0bc69bd8961586ab17556fd7c580783964ce20980e3a37a9189b54274fc9099954773ce"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "Digital.sh",
+                    "commands": [
+                        "#!/bin/sh",
+                        "export JAVA_HOME=/app/jre",
+                        "export JAVA=${JAVA_HOME}/bin/java",
+                        "export _JAVA_OPTIONS=\"-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=True\"",
+                        "${JAVA} -jar $(dirname $0)/Digital.jar"
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
