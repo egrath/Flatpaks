@@ -1,0 +1,181 @@
+{
+    "id": "com.github.mupen64plus",
+    "branch": "2.5.9",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.13",
+    "sdk": "org.kde.Sdk",
+    "command": "mupen64plus-gui",
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/debug",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=x11",
+	    "--socket=wayland",
+	    "--socket=pulseaudio",
+	    "--share=network",
+	    "--filesystem=home"
+    ],
+    "modules": [
+        "shared-modules/glu/glu-9.json",
+        "shared-modules/glew/glew.json",
+        {
+            "name": "SDL2",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://libsdl.org/release/SDL2-2.0.10.zip",
+                    "sha512": "bbe0c6535c1ceecee917f5014bf943e1e514302c491194bbfe7e95f25f1a2aaea374343d90a5c8f41bf408484b945ff9a7cc772dfcd27841338cd55a3b8e1e12"
+                }
+            ]
+        },
+        {
+            "name": "mupen64plus-core",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make PREFIX=/app DEBUG=0 all",
+                "make PREFIX=/app install"
+            ],
+            "subdir": "projects/unix",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mupen64plus/mupen64plus-core/releases/download/2.5.9/mupen64plus-core-src-2.5.9.tar.gz",
+                    "sha512": "8087211eb3301e356e1529c1702c965aca5e9191a5a3efe604f2e2f7470da44c8c3be506ba1f0aa96b209baa8faf011ca153566540e96c278fe63a330b791f20"
+                }
+            ]
+        },
+        {
+            "name": "mupen64plus-input-sdl",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make APIDIR=/app/include/mupen64plus PREFIX=/app DEBUG=0 all",
+                "make APIDIR=/app/include/mupen64plus PREFIX=/app install"             
+            ],
+            "subdir": "projects/unix",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mupen64plus/mupen64plus-input-sdl/releases/download/2.5.9/mupen64plus-input-sdl-src-2.5.9.tar.gz",
+                    "sha512": "b613396ee05e82aaaf15e955f83b5cb4e854df1fdb34d5e1c96cf0fddf0af79aa5af2ceb19cc9cfeaef707c2ecafd25e0814e3d7715a20b740482d0ece273f2f"
+                }
+            ]
+        },
+        {
+            "name": "mupen64plus-rsp-cxd4",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make APIDIR=/app/include/mupen64plus PREFIX=/app DEBUG=0 all",
+                "make APIDIR=/app/include/mupen64plus PREFIX=/app install"             
+            ],
+            "subdir": "projects/unix",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mupen64plus/mupen64plus-rsp-cxd4/releases/download/2.5.9/mupen64plus-rsp-cxd4-src-2.5.9.tar.gz",
+                    "sha512": "4a6a847e4f85405148b84fc4c258e5df150260338e02e6f3611192ba00ff6fcdefee8379518d4ef9bd13e81769eca4c9ebc0614c843251988681e2daaa80c6a1"
+                }
+            ]
+        },
+        {
+            "name": "mupen64plus-audio-sdl",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make APIDIR=/app/include/mupen64plus PREFIX=/app DEBUG=0 all",
+                "make APIDIR=/app/include/mupen64plus PREFIX=/app install"              
+            ],
+            "subdir": "projects/unix",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/mupen64plus/mupen64plus-audio-sdl/releases/download/2.5.9/mupen64plus-audio-sdl-src-2.5.9.tar.gz",
+                    "sha512": "624f7061b4909a5de071fbb8cf6432fd4b6ad390ea3f7dc7ae7a874dc922afee55352e53d48fba43d45a3282e9382e6b5774814c2a7d9724e134a01188596ea9"
+                }
+            ]
+        },
+        {
+            "name": "gliden64",
+            "buildsystem": "simple",
+            "build-commands": [
+                "chmod +x ./getRevision.sh",
+                "./getRevision.sh",
+                "cmake -DMUPENPLUSAPI=/app/lib -DCMAKE_INSTALL_PREFIX=/app",
+                "make -j $(nproc)",
+                "install -Dm755 plugin/Release/mupen64plus-video-GLideN64.so /app/lib/mupen64plus/mupen64plus-video-GLideN64.so",
+                "install -Dm755 ../font.ttf /app/bin/font.ttf"
+            ],
+            "subdir": "src",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/gonetz/GLideN64.git"
+                },
+                {
+                    "type": "file",
+                    "path": "FreeSans.ttf",
+                    "dest-filename": "font.ttf"
+                }
+            ]
+        },
+        {
+            "name": "mupen64plus-gui",
+            "buildsystem": "simple",
+            "build-commands": [
+                "qmake QMAKE_LIBDIR=/app/lib",
+                "make -j $(nproc)",
+                "install -Dm755 mupen64plus-gui /app/bin/mupen64plus-gui"
+            ],
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/m64p/mupen64plus-gui.git"
+                }
+            ]
+        },
+        {
+            "name": "mupen64plus-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm644 com.github.mupen64plus.desktop /app/share/applications/com.github.mupen64plus.desktop",
+                "install -Dm644 com.github.mupen64plus.svg /app/share/icons/hicolor/256x256/apps/com.github.mupen64plus.svg"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.mupen64plus.svg"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.mupen64plus.desktop"
+                }
+            ]
+        },
+        {
+            "name": "p7zip",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make -j $(nproc) all",
+                "install -Dm755 bin/7za /app/bin/7za"
+            ],
+            "sources": [
+                {
+                    "url": "https://netcologne.dl.sourceforge.net/project/p7zip/p7zip/16.02/p7zip_16.02_src_all.tar.bz2",
+                    "type": "archive",
+                    "sha512": "d2c4d53817f96bb4c7683f42045198d4cd509cfc9c3e2cb85c8d9dc4ab6dfa7496449edeac4e300ecf986a9cbbc90bd8f8feef8156895d94617c04e507add55f"
+                }
+            ]
+        }
+    ]
+}
