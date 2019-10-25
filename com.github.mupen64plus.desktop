@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Mupen64+
 Comment=A open source Nintendo 64 Emulator
-Exec=mupen64plus-gui
+Exec=mupen64plus-qt
 Icon=com.github.mupen64plus
 Terminal=false
 Type=Application

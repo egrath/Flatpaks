@@ -1,0 +1,8 @@
+--- CMakeLists.txt	2018-06-13 17:51:21.000000000 +0200
++++ CMakeLists_patched.txt	2019-04-26 07:41:19.225504536 +0200
+@@ -60,4 +60,4 @@
+ 
+ add_subdirectory(quazip)
+ 
+-install(FILES FindQuaZip.cmake RENAME FindQuaZip${QUAZIP_LIB_VERSION_SUFFIX}.cmake DESTINATION ${CMAKE_ROOT}/Modules)
++#install(FILES FindQuaZip.cmake RENAME FindQuaZip${QUAZIP_LIB_VERSION_SUFFIX}.cmake DESTINATION ${CMAKE_ROOT}/Modules)
