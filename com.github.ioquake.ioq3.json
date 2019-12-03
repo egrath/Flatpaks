@@ -1,0 +1,87 @@
+{
+	"id": "com.github.ioquake.ioq3",
+	"branch": "master",
+	"runtime": "org.freedesktop.Platform",
+	"runtime-version": "19.08",
+	"sdk": "org.freedesktop.Sdk",
+	"command": "ioquake3-launcher",
+    "finish-args": [
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--filesystem=home"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+	"modules": [
+	    {
+	        "name": "ioquake3-launcher",
+	        "buildsystem": "simple",
+	        "build-commands": [
+	            "install -Dm755 ioquake3-launcher /app/bin/ioquake3-launcher"
+	        ],
+	        "sources": [
+	            {
+	                "type": "script",
+	                "commands": [
+	                    "#!/bin/sh",
+	                    "pushd /app/q3a",
+	                    "./ioquake3.x86_64",
+	                    "popd"
+	                ],
+	                "dest-filename": "ioquake3-launcher"
+	            }
+	        ]
+	    },
+	    {
+	        "name": "ioquake3",
+	        "buildsystem": "simple",
+	        "build-commands": [
+	            "echo building",
+	            "make -j $(nproc)",
+                "mkdir -p /app/q3a",
+                "cp -vrp build/release-linux-x86_64/* /app/q3a"
+	        ],
+	        "sources": [
+	            {
+	                "type": "git",
+	                "url": "https://github.com/ioquake/ioq3.git"
+	            } 
+	        ]
+	    },
+        {
+            "name": "ioquake3-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration files"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.ioquake.ioq3.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.ioquake.ioq3.png"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.ioquake.ioq3.desktop /app/share/applications/com.github.ioquake.ioq3.desktop",
+                "install -Dm644 com.github.ioquake.ioq3.png /app/share/icons/hicolor/256x256/apps/com.github.ioquake.ioq3.png"
+            ]
+        }
+
+	]
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ioquake3
+Comment=Quake III Arena
+Exec=ioquake3-launcher
+Terminal=false
+Icon=com.github.ioquake.ioq3
+Type=Application
+Categories=Game
+
