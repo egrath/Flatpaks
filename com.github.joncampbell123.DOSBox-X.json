@@ -1,6 +1,6 @@
 {
     "app-id": "com.github.joncampbell123.DOSBox-X",
-    "branch": "0.82.21",
+    "branch": "0.82.24",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "19.08",
     "sdk": "org.freedesktop.Sdk",
@@ -25,15 +25,15 @@
         "no-debuginfo": true
     },
     "modules": [
-	    "shared-modules/glu/glu-9.0.0.json",
+	    "shared-modules/glu/glu-9.json",
         {
             "name": "LibPCap",
             "buildsystem": "autotools",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.tcpdump.org/release/libpcap-1.9.0.tar.gz",
-                    "sha256": "2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
+                    "url": "https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz",
+                    "sha512": "ae0d6b0ad8253e7e059336c0f4ed3850d20d7d2f4dc1d942c2951f99a5443a690f0cc42c6f8fdc4a0ccb19e9e985192ba6f399c4bde2c7076e420f547fddfb08"
                 }
              ]
         },
@@ -44,8 +44,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.21.tar.gz",
-                    "sha256": "2b5ddf9fc86bd6ff55b3bfdc2984c87698939583e9f8956d552ae922eb4fcb3d"
+                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.24.tar.gz",
+                    "sha512": "6e3fbf238bc7055fe2d3371dc7ac4d48985ca261a0e159f9050ad617c5a37b8c38179968ed8ca8420f5e1f589c58c22da4c88648f907f32900480770101b2adf"
                 },
                 {
                     "type": "file",
