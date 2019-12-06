@@ -1,3 +1,7 @@
+# SCREENSHOT #
+
+![Screenshot](https://raw.githubusercontent.com/egrath/dosbox-x-flatpak/master/screenshot01.png)
+
 # GETTING #
 
 ```
