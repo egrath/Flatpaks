@@ -1,8 +1,8 @@
 {
     "id": "com.github.trufanovnok.scantailor",
-    "branch": "0.2.6",
+    "branch": "0.2.7",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
+    "runtime-version": "5.13",
     "sdk": "org.kde.Sdk",
     "command": "scantailor",
     "finish-args": [
@@ -11,7 +11,15 @@
         "--device=dri",
         "--filesystem=home"
     ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
     "build-options": {
+        "strip": true,
         "no-debuginfo": true
     },
     "modules": [
@@ -26,8 +34,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.bz2",
-                    "sha256": "8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406"
+                    "url": "https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz",
+                    "sha512": "4378e20f18db9f186ac0f38ad98c522526e0fe48a8deb968c41325e3f69e733be3298505e91ea713e79a9d9e741305fa879d289f74e6276e0ec7286f03be87fc"
                 },
                 {
                     "type": "file",
@@ -43,8 +51,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/trufanov-nok/scantailor/archive/0.2.6.tar.gz",
-                    "sha256": "f72bb54b9f6e4347586da9a805c8c032dbe2b3cb5f5274a692b5d6449dd8e586"
+                    "url": "https://github.com/trufanov-nok/scantailor/archive/0.2.7.tar.gz",
+                    "sha512": "a67111816e2113bf12981333989706813ca5b152078832d827d93c919b4342a1167d129c1136426ab2a55acfacd31e3756a630fa67943ec56bf2efa2bfee3e9d"
                 }
             ]
         },
