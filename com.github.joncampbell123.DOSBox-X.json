@@ -21,7 +21,7 @@
         "*.la", "*.a"
     ],
     "build-options": {
-        "strip": true,
+        "strip": false,
         "no-debuginfo": true
     },
     "modules": [
