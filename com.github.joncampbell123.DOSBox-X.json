@@ -1,6 +1,6 @@
 {
     "app-id": "com.github.joncampbell123.DOSBox-X",
-    "branch": "0.82.24",
+    "branch": "0.82.26",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "19.08",
     "sdk": "org.freedesktop.Sdk",
@@ -44,8 +44,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.24.tar.gz",
-                    "sha512": "6e3fbf238bc7055fe2d3371dc7ac4d48985ca261a0e159f9050ad617c5a37b8c38179968ed8ca8420f5e1f589c58c22da4c88648f907f32900480770101b2adf"
+                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.26.tar.gz",
+                    "sha512": "ee4fb2c7a163bd905ae66770718360554682ab4081a0099d590bedd174ded1ffc3a59fcc5c1e03dc67be4f9efae6c96e2f384e4dabbaf59641be8c43e688d825"
                 },
                 {
                     "type": "file",
