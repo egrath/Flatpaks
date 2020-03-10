@@ -2,7 +2,7 @@
     "app-id": "com.github.nomacs",
     "branch": "3.12",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.13",
+    "runtime-version": "5.14",
     "sdk": "org.kde.Sdk",
     "finish-args": [
         "--device=dri",
@@ -21,8 +21,20 @@
         "*.la", "*.a"
     ],
     "build-options": {
-        "strip": true,
-        "no-debuginfo": true
+        "arch": {
+            "x86-64": {
+                "no-debuginfo": true,
+                "strip": true
+            },
+            "aarch64": {
+                "no-debuginfo": false,
+                "strip": false
+            },
+            "arm": {
+                "no-debuginfo": false,
+                "strip": false
+            }
+        }
     },
     "modules": [
         {
@@ -54,8 +66,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.libraw.org/data/LibRaw-0.19.2.tar.gz",
-                    "sha256": "400d47969292291d297873a06fb0535ccce70728117463927ddd9452aa849644"
+                    "url": "https://www.libraw.org/data/LibRaw-0.19.5.tar.gz",
+                    "sha512": "4560045f75e6d2ab0d1d8686075f3a0e26a5d7ce693b48508110a2c31d19055d58983c24852da0abb64fa90db5e20f24b87aa7537ed04d958c38c8b265a7e826"
                 }
             ]
         },
@@ -66,13 +78,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/stachenov/quazip/archive/0.7.6.tar.gz",
-                    "sha256": "4118a830a375a81211956611cc34b1b5b4ddc108c126287b91b40c2493046b70"
+                    "url": "https://github.com/stachenov/quazip/archive/v0.8.1.tar.gz",
+                    "sha512": "d65dab16c2cbc4d8bb23dae5b2fdff5ef787aaff2653b8e75c3fc8ba1701f5568a52bdde39009f83c5069a9fe3331cd1a49cf965822c4180e88bbc341faa2bfb"
                 },
                 {
                     "type": "patch",
                     "path": "quazip.patch",
-                    "strip-components": 0
+                    "strip-components": 1
                 }
             ]
         },
