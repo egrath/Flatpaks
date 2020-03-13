@@ -1,8 +1,8 @@
 {
     "id": "com.github.trufanovnok.scantailor",
-    "branch": "0.2.7",
+    "branch": "0.2.8",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.13",
+    "runtime-version": "5.14",
     "sdk": "org.kde.Sdk",
     "command": "scantailor",
     "finish-args": [
@@ -19,8 +19,20 @@
         "*.la", "*.a"
     ],
     "build-options": {
-        "strip": true,
-        "no-debuginfo": true
+        "arch": {
+            "x86-64": {
+                "no-debuginfo": true,
+                "strip": true
+            },
+            "aarch64": {
+                "no-debuginfo": false,
+                "strip": false
+            },
+            "arm": {
+                "no-debuginfo": false,
+                "strip": false
+            }
+        }
     },
     "modules": [
         {
@@ -51,8 +63,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/trufanov-nok/scantailor/archive/0.2.7.tar.gz",
-                    "sha512": "a67111816e2113bf12981333989706813ca5b152078832d827d93c919b4342a1167d129c1136426ab2a55acfacd31e3756a630fa67943ec56bf2efa2bfee3e9d"
+                    "url": "https://github.com/trufanov-nok/scantailor/archive/0.2.8.tar.gz",
+                    "sha512": "e4203419d9814e2eedaaed27051eae88dc77b98b248af79dd85258ef41f881c52a8e982fadc3d492074d60c0dc0a7810a015a4eaa9827dec02e9eff5bb086822"
                 }
             ]
         },
