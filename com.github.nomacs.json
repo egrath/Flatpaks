@@ -1,6 +1,6 @@
 {
     "app-id": "com.github.nomacs",
-    "branch": "3.12",
+    "branch": "3.14",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.14",
     "sdk": "org.kde.Sdk",
@@ -98,8 +98,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/nomacs/nomacs/archive/3.12.tar.gz",
-                    "sha256": "f4a32169e6c0cb939971da2732e4d67c6e2e649506da1b55bfc94963a26280ff"
+                    "url": "https://github.com/nomacs/nomacs/archive/3.14.tar.gz",
+                    "sha512": "09d4c222f421661a09b7dfd5d2d162a5bb773dd9b262563dfe9f8af4fafd5d653892a1c42993154cf362fb69668bc4bac42da3a0b32b04b421513eca1ae54ec3"
                 },
                 {
                     "type": "patch",
