@@ -1,0 +1,93 @@
+{
+    "app-id": "com.github.byuu.bsnes",
+    "branch": "v110-master",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.30",
+    "sdk": "org.gnome.Sdk",
+    "finish-args": [
+        "--share=ipc",
+        "--share=network",
+	    "--filesystem=home",
+        "--share=network",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--device=dri"
+    ],
+    "command": "bsnes",
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        "shared-modules/SDL/SDL-1.2.15.json",
+        "shared-modules/SDL/SDL_net-1.2.8.json",
+        "shared-modules/SDL/SDL_mixer-1.2.12.json",
+        "shared-modules/gtk2/gtk2.json",
+        "shared-modules/udev/udev-175.json",
+	    {
+	    "name": "gtksourceview",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtksourceview/2.10/gtksourceview-2.10.5.tar.gz",
+                    "sha256": "f5c3dda83d69c8746da78c1434585169dd8de1eecf2a6bcdda0d9925bf857c97"
+                }
+            ]
+	    },
+        {
+            "name": "libao",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz",
+                    "sha256": "03ad231ad1f9d64b52474392d63c31197b0bc7bd416e58b1c10a329a5ed89caf"
+                }
+            ]
+        },
+        {
+            "name": "bsnes",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make prefix=/app -j $(nproc) -C bsnes",
+                "make prefix=/app -j $(nproc) -C bsnes install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/byuu/bsnes.git"
+                }
+            ]
+        },
+        {
+            "name": "bsnes-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.byuu.bsnes.png"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.byuu.bsnes.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.byuu.bsnes.png /app/share/icons/hicolor/256x256/apps/com.github.byuu.bsnes.png",
+                "install -Dm644 com.github.byuu.bsnes.desktop /app/share/applications/com.github.byuu.bsnes.desktop"
+            ]
+        }
+    ]
+}
