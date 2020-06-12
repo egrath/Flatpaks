@@ -1,0 +1,78 @@
+{
+    "app-id": "com.github.ultimaker.cura",
+    "branch": "4.0.0",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=all",
+        "--filesystem=home"
+    ],
+    "command": "cura.sh",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "build-options": {
+        "strip": false,
+        "no-debuginfo": true
+    },
+    "modules": [
+        {
+            "name": "xorriso",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.gnu.org/software/xorriso/xorriso-1.5.0.tar.gz",
+                    "sha256": "a93fa7ae5bb1902198cddfec25201388156932f36f2f5da829bf4fcae9a6062b"
+                }
+            ]
+        },
+        {
+            "name": "cura",
+            "buildsystem": "simple",
+            "build-commands": [
+                "xorriso -indev Cura-4.0.0.AppImage -osirrox on -extract / AppDir",
+                "cp -vr AppDir/usr/bin/* /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://github.com/Ultimaker/Cura/releases/download/4.0.0/Cura-4.0.0.AppImage",
+                    "sha256": "481cfac4f2836e0d540af75ef71ee8a41797602d6d89baa407b9d112f6dce37e"
+                }
+            ]
+        },
+        {
+            "name": "cura-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration files"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.ultimaker.cura.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.ultimaker.cura.png"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.ultimaker.cura.desktop /app/share/applications/com.github.ultimaker.cura.desktop",
+                "install -Dm644 com.github.ultimaker.cura.png /app/share/icons/hicolor/256x256/apps/com.github.ultimaker.cura.png"
+            ]
+        }
+
+    ]
+}
+
