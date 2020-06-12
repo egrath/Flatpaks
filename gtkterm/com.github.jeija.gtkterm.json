@@ -1,0 +1,78 @@
+{
+    "app-id": "com.github.jeija.gtkterm",
+    "branch": "master",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.30",
+    "sdk": "org.gnome.Sdk",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=x11",
+	"--socket=wayland",
+	"--socket=pulseaudio",
+	"--persist=."
+    ],
+    "command": "gtkterm",
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        "shared-modules/udev/udev-175.json",
+        {  
+            "name": "vte",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/vte/0.36/vte-0.36.5.tar.xz",
+                    "sha256": "c2c2ce9640f08b07667f1037862fe991081495446b735c0afb98f45e35b64edf"
+                }
+            ]
+        },
+        {
+            "name": "gtkterm",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Jeija/gtkterm.git"
+                },
+                {
+                    "type": "patch",
+                    "path": "udev-version-patch.diff"
+                }
+            ]
+        },
+        {
+            "name": "gtkterm-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm644 com.github.jeija.gtkterm.desktop /app/share/applications/com.github.jeija.gtkterm.desktop",
+                "install -Dm644 com.github.jeija.gtkterm.png /app/share/icons/hicolor/256x256/apps/com.github.jeija.gtkterm.png",
+		        "install -Dm644 com.github.jeija.gtkterm.appdata.xml /app/share/appdata/com.github.jeija.gtkterm.appdata.xml"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.jeija.gtkterm.png"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.jeija.gtkterm.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.jeija.gtkterm.appdata.xml"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.github.jeija.gtkterm</id>
+  <project_license>GPL-3.0</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>GTKTerm</name>
+  <summary>A GTK+ serial port terminal</summary>
+  <description>
+	<p>
+	A serial port terminal for sending and receiving data using
+	a serial port
+	</p>
+  </description>
+  <url type="homepage">https://github.com/Jeija/gtkterm</url>
+  <releases>
+    <release version="master" date="2019-04-08"/>
+  </releases>
+</component>
