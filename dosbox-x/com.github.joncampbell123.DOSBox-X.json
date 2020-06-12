@@ -1,0 +1,70 @@
+{
+    "app-id": "com.github.joncampbell123.DOSBox-X",
+    "branch": "0.83.1",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=pulseaudio",
+        "--filesystem=home"
+    ],
+    "command": "dosbox-x",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "build-options": {
+        "strip": false,
+        "no-debuginfo": true
+    },
+    "modules": [
+	    "shared-modules/glu/glu-9.json",
+        {
+            "name": "LibPCap",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.tcpdump.org/release/libpcap-1.9.1.tar.gz",
+                    "sha512": "ae0d6b0ad8253e7e059336c0f4ed3850d20d7d2f4dc1d942c2951f99a5443a690f0cc42c6f8fdc4a0ccb19e9e985192ba6f399c4bde2c7076e420f547fddfb08"
+                }
+             ]
+        },
+        {
+            "name": "dosbox-x",
+            "buildsystem": "autotools",
+            "config-opts": [ "--enable-sdl2", "--disable-sdl", "--disable-debug", "--enable-core-inline", "--enable-avcodec" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.1.tar.gz",
+                    "sha512": "43482bbf33ec72f925525ec5fc6cad11f00f5a7dc385b3daaed4ba82f0c7ea372b9de3c83d7189a80a0157023c7e5e54148c1ae2c7ac36b3ff8a34c971e8df9e"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.joncampbell123.DOSBox-X.png"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.joncampbell123.DOSBox-X.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.joncampbell123.DOSBox-X.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.joncampbell123.DOSBox-X.appdata.xml /app/share/appdata/com.github.joncampbell123.DOSBox-X.appdata.xml",
+                "install -Dm644 com.github.joncampbell123.DOSBox-X.desktop /app/share/applications/com.github.joncampbell123.DOSBox-X.desktop",
+                "install -Dm644 com.github.joncampbell123.DOSBox-X.png /app/share/icons/hicolor/256x256/apps/com.github.joncampbell123.DOSBox-X.png"
+            ]
+        }
+    ]
+}
