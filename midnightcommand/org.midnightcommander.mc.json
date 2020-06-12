@@ -1,0 +1,43 @@
+{
+    "app-id": "org.midnightcommander.mc",
+    "branch": "4.8.22",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--share=ipc",
+	"--filesystem=host"
+    ],
+    "command": "mc",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        {
+            "name": "s-lang",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "ftp://space.mit.edu/pub/davis/slang/v2.1/slang-2.1.4.tar.bz2",
+                    "sha256": "944e7123a3889f1e972f77c7cd46e2e98f7f8d02d25c585f1276c9c9307161a6"
+                }
+            ]
+        },
+        {
+            "name": "mc",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.midnight-commander.org/mc-4.8.22.tar.bz2",
+		    "sha256": "8d9f1c75369967adfd317a05fef9861444ed049b033e4debaeaafc6df218b431"
+                }
+            ]
+        }
+    ]
+}
