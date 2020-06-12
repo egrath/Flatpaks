@@ -1,0 +1,135 @@
+{
+    "app-id": "com.microsoft.winfile",
+    "branch": "master",
+    
+    "runtime": "org.winepak.Platform",
+    "runtime-version": "3.0",
+    "sdk": "org.winepak.Sdk",
+    
+    "command": "winfile",
+    
+    "add-extensions": {
+        "org.winepak.Platform.Compat32": {
+            "directory": "lib/32bit",
+            "version": "3.0",
+            "add-ld-path": "lib",
+            "no-autodownload": false
+        },
+        "org.winepak.Platform.Wine": {
+            "directory": "lib/wine",
+            "version": "3.10-staging",
+            "add-ld-path": "lib",
+            "no-autodownload": false
+        },
+        "org.winepak.Platform.Wine.Compat32": {
+            "directory": "lib/wine-32bit",
+            "version": "3.10-staging",
+            "add-ld-path": "lib",
+            "no-autodownload": false
+        },
+        "org.winepak.Platform.Extension.d3dx9": {
+            "directory": "lib/extension/d3dx9",
+            "version": "3.0",
+            "no-autodownload": true
+        },
+        "org.winepak.Platform.Extension.corefonts": {
+            "directory": "lib/extension/corefonts",
+            "version": "3.0",
+            "no-autodownload": true
+        }
+    },
+    
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--share=network",
+        "--device=dri",
+        "--allow=multiarch",
+        "--filesystem=home",
+        "--env=MESA_GLTHREAD=true",
+        "--env=__GL_THREADED_OPTIMIZATIONS=1"
+    ],
+    
+    "modules": [
+        {
+            "name": "setup-compat32",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/32bit",
+                "ln -s /app/lib/32bit/lib/ld-linux.so.2 /app/lib/ld-linux.so.2"
+            ]
+        },
+        {
+            "name": "setup-wine",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/wine"
+            ]
+        },
+        {
+            "name": "setup-wine-compat32",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/wine-32bit"
+            ]
+        },
+        {
+            "name": "setup",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/lib/extension/d3dx9",
+                "mkdir -p /app/lib/extension/corefonts"
+            ]
+        },
+        {
+            "name": "winfile",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -d /app/bin",
+                "install -d /app/extra",
+                "install -Dm755 winfile /app/bin/winfile",
+                "install -Dm755 winfile.exe /app/bin/winfile.exe"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "winfile.exe"
+                },
+                {
+                    "type": "script",
+                    "dest-filename": "winfile",
+                    "commands": [
+                        "export WINEARCH=win32",
+                        "wineboot",
+                        "wine reg add 'HKEY_CURRENT_USER\Software\Wine\Direct3D' /v UseGLSL /d enabled /f",
+                        "wine reg add 'HKEY_CURRENT_USER\Software\Wine\Direct3D' /v csmt /d on /f",
+                        "wine /app/bin/winfile.exe"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "winfile-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.microsoft.winfile.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.microsoft.winfile.svg"
+                }
+            ],
+            "post-install": [
+                "install -Dm755 com.microsoft.winfile.desktop /app/share/applications/com.microsoft.winfile.desktop",
+                "install -Dm644 com.microsoft.winfile.svg /app/share/icons/hicolor/256x256/apps/com.microsoft.winfile.svg"
+            ]
+        }
+    ]
+}
+
