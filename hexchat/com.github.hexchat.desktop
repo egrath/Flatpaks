@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hexchat
+Exec=hexchat 
+Terminal=false
+Icon=com.github.hexchat
+Type=Application
+Categories=Network
+

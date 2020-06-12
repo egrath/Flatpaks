@@ -1,0 +1,11 @@
+--- Makefile	2017-05-01 20:11:00.000000000 +0200
++++ Makefile.new	2019-04-30 07:42:30.612016975 +0200
+@@ -24,7 +24,7 @@
+ # Change the installation path as needed. This automatically adjusts
+ # the paths in src/luaconf.h, too. Note: PREFIX must be an absolute path!
+ #
+-export PREFIX= /usr/local
++export PREFIX= /app
+ export MULTILIB= lib
+ ##############################################################################
+ 
