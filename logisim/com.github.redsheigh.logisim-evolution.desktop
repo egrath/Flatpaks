@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Logisim Evolution
+GenericName=Digital logic simulator
+Comment=Logisim is an educational tool for designing and simulating digital logic circuits.
+Exec=logisim-evolution.sh
+Terminal=false
+Icon=com.github.redsheigh.logisim-evolution
+Type=Application
+Categories=Education;Development
+
