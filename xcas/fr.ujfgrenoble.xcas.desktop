@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Icon=fr.ujfgrenoble.xcas
+Name=XCAS
+Description=A symbolic computer algebra system
+Exec=xcas
+Categories=Science
+

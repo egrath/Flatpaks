@@ -1,0 +1,119 @@
+{
+    "app-id": "fr.ujfgrenoble.xcas",
+    "branch": "1.5.0-85",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "xcas",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--filesystem=home"
+    ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "cleanup": [
+        "/include",
+        "/lib/debug",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+	    {
+		    "name": "mpfr",
+		    "buildsystem": "autotools",
+		    "config-opts": [
+		        "--enable-static=no"
+		    ],
+		    "sources": [
+			    {
+				    "type": "archive",
+				    "url": "https://www.mpfr.org/mpfr-current/mpfr-4.0.2.tar.gz",
+				    "sha256": "ae26cace63a498f07047a784cd3b0e4d010b44d2b193bab82af693de57a19a78"
+			    }
+		    ]
+	    },
+	    {
+	        "name": "ntl",
+	        "buildsystem": "simple",
+	        "build-commands": [
+	            "./configure SHARED=on PREFIX=/app",
+	            "make -j $(nproc)",
+	            "make install"
+	        ],
+	        "subdir": "src",
+	        "sources": [
+	            {
+	                "type": "archive",
+	                "url": "https://shoup.net/ntl/ntl-11.4.1.tar.gz",
+	                "sha256": "a30687c4fbb8f114200426d2b1ece840bd024f64e2c5c6920b2d11ebcd82620e"
+	            }
+	        ]
+	    },
+	    {
+	        "name": "gsl",
+	        "buildsystem": "autotools",
+	        "config-opts": [
+	            "--enable-static=no"
+	        ],
+	        "sources": [
+	            {
+	                "type": "archive",
+	                "url": "ftp://ftp.gnu.org/gnu/gsl/gsl-2.6.tar.gz",
+	                "sha256": "b782339fc7a38fe17689cb39966c4d821236c28018b6593ddb6fd59ee40786a8"
+	            }
+	        ]
+	    },
+        {
+            "name": "fltk",            
+            "config-opts": [
+                "--enable-shared",
+                "--enable-xrender=no",
+                "--enable-xinerama=no"                
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.fltk.org/pub/fltk/1.3.5/fltk-1.3.5-source.tar.bz2",
+                    "sha256": "2933c72400f9e7c0f4c3a81a1ce98bc9582b2a3edc44b8597ccd26e240e32c3c"
+                }
+            ]
+        },
+        {
+            "name": "xcas",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www-fourier.ujf-grenoble.fr/~parisse/giac/giac_stable.tgz",
+                    "sha256": "301bcd7c24c4fadaacfa7679916b3967701a16abcf55cc4af2b187055d7e2c0e"
+                }
+            ]
+        },
+        {
+            "name": "xcas-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "fr.ujfgrenoble.xcas.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "fr.ujfgrenoble.xcas.svg"
+                }
+            ],
+            "post-install": [
+                "install -Dm755 fr.ujfgrenoble.xcas.desktop /app/share/applications/fr.ujfgrenoble.xcas.desktop",
+                "install -Dm644 fr.ujfgrenoble.xcas.svg /app/share/icons/hicolor/256x256/apps/fr.ujfgrenoble.xcas.svg"
+            ]
+        }
+    ]
+}
