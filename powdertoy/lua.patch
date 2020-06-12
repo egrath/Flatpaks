@@ -1,0 +1,11 @@
+--- lua-5.1.5/Makefile.ori	2012-02-10 10:50:23.000000000 +0100
++++ lua-5.1.5/Makefile	2020-03-16 09:18:59.306629513 +0100
+@@ -9,7 +9,7 @@
+ 
+ # Where to install. The installation starts in the src and doc directories,
+ # so take care if INSTALL_TOP is not an absolute path.
+-INSTALL_TOP= /usr/local
++INSTALL_TOP= /app
+ INSTALL_BIN= $(INSTALL_TOP)/bin
+ INSTALL_INC= $(INSTALL_TOP)/include
+ INSTALL_LIB= $(INSTALL_TOP)/lib

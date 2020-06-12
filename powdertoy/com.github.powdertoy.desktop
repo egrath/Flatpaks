@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=The Powder Toy
+Comment=A falling sand physics game
+Exec=powder64
+Icon=com.github.powdertoy.png
+Terminal=false
+Type=Application
+Categories=Games
+

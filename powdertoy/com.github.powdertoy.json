@@ -1,0 +1,109 @@
+{
+    "app-id": "com.github.powdertoy",
+    "branch": "master",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=pulseaudio",
+        "--filesystem=home"
+    ],
+    "command": "powder64",
+    "cleanup": [
+        "/bin/fftw*",      
+        "/include",     
+        "/lib/pkgconfig",
+        "/lib/lua",
+        "/lib/cmake",
+        "/share/aclocal",
+        "/share/man",
+        "/share/info",
+        "/share/lua",
+        "*.la", "*.a"
+    ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": false
+    },
+    "modules": [    
+        {
+            "name": "lua",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make -j $(nproc) linux",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.lua.org/ftp/lua-5.1.5.tar.gz",
+                    "sha512": "0142fefcbd13afcd9b201403592aa60620011cc8e8559d4d2db2f92739d18186860989f48caa45830ff4f99bfc7483287fd3ff3a16d4dec928e2767ce4d542a9"
+                },
+                {
+                    "type": "patch",
+                    "path": "lua.patch"
+                }
+
+            ]
+        },
+        {
+            "name": "fftw",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--enable-single"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://www.fftw.org/fftw-3.3.8.tar.gz",
+                    "sha512": "ab918b742a7c7dcb56390a0a0014f517a6dff9a2e4b4591060deeb2c652bf3c6868aa74559a422a276b853289b4b701bdcbd3d4d8c08943acf29167a7be81a38"
+                }
+            ]
+        },
+        {
+            "name": "powdertoy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "tar -xf 3.0.4.tar.gz",
+                "LIBPATH=/app/lib python3 scons-3.0.4/src/script/scons.py -j $(nproc) --lin --sse3 PREFIX=/app",
+                "install -Dm755 build/powder64 /app/bin/powder64"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://github.com/SCons/scons/archive/3.0.4.tar.gz",
+                    "sha512": "d57924f0e7713ec2e5d7159fbf0078947aa5ce49f7cdf7a4ea47c19efbce7ec335a5e5448e200240be1095655c5c25f1466285f0bed5bdadeb2673845b23c4f5"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/The-Powder-Toy/The-Powder-Toy.git"
+                }
+            ]
+        },
+        {
+            "name": "powdertoy-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration files"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.powdertoy.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.powdertoy.png"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.powdertoy.desktop /app/share/applications/com.github.powdertoy.desktop",
+                "install -Dm644 com.github.powdertoy.png /app/share/icons/hicolor/256x256/apps/com.github.powdertoy.png"
+            ]
+        }        
+    ]
+}
