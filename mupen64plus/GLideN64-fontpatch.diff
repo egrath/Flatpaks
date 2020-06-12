@@ -1,0 +1,30 @@
+diff -ur GLideN64.ori/src/TextDrawer.cpp GLideN64/src/TextDrawer.cpp
+--- GLideN64.ori/src/TextDrawer.cpp	2019-10-25 06:38:42.316025538 +0200
++++ GLideN64/src/TextDrawer.cpp	2019-10-25 07:26:04.381299653 +0200
+@@ -200,25 +200,7 @@
+ static
+ bool getFontFileName(char * _strName)
+ {
+-#ifdef OS_WINDOWS
+-	char * pSysPath = getenv("WINDIR");
+-	if (pSysPath == nullptr)
+-		return false;
+-	sprintf(_strName, "%s/Fonts/%s", pSysPath, config.font.name.c_str());
+-#elif defined (OS_ANDROID)
+-	sprintf(_strName, "/system/fonts/%s", config.font.name.c_str());
+-#elif defined (PANDORA)
+-	sprintf(_strName, "/usr/share/fonts/truetype/%s", config.font.name.c_str());
+-#else
+-	sprintf(_strName, "/usr/share/fonts/truetype/freefont/%s", config.font.name.c_str());
+-#endif
+-#ifdef MUPENPLUSAPI
+-	if (!osal_path_existsA(_strName)) {
+-		const char * fontPath = ConfigGetSharedDataFilepath("font.ttf");
+-		if (osal_path_existsA(fontPath))
+-			strncpy(_strName, fontPath, PLUGIN_PATH_SIZE);
+-	}
+-#endif
++    sprintf(_strName, "/app/share/mupen64plus/%s", config.font.name.c_str());
+ 	return true;
+ }
+ 
