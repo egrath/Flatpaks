@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=IDLE 3.7
+Type=Application
+Icon=org.python.idle37.png
+Exec=idle3
+Categories=Development
+

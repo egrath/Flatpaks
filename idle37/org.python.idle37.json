@@ -1,0 +1,90 @@
+{
+    "id": "org.python.idle37",
+    "branch": "3.7.3",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "python3",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--share=ipc",
+        "--filesystem=home"
+    ],
+    "build-options": {
+        "no-debuginfo": true
+    },
+    "modules": [
+        {
+            "name": "tcl869",
+            "buildsystem": "autotools",
+            "subdir": "unix",
+            "config-opts": [
+                "--enable-threads"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "ftp://ftp.tcl.tk/pub/tcl/tcl8_6/tcl8.6.9-src.tar.gz",
+                    "sha256": "ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e"
+                }
+            ]
+        },
+        {
+            "name": "tk869",
+            "buildsystem": "autotools",
+            "subdir": "unix",
+            "config-opts": [
+                "--with-x",
+                "--enable-threads"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "ftp://ftp.tcl.tk/pub/tcl/tcl8_6/tk8.6.9.1-src.tar.gz",
+                    "sha256": "8fcbcd958a8fd727e279f4cac00971eee2ce271dc741650b1fc33375fb74ebb4"
+                }
+            ]
+        },
+        {
+            "name": "python37",
+            "buildsystem": "autotools",
+            "builddir": true,
+            "config-opts": [
+                "--disable-ipv6",
+                "--with-lto",
+                "--with-system-expat",
+                "--with-system-ffi"                
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz",
+                    "sha256": "d62e3015f2f89c970ac52343976b406694931742fbde2fed8d1ce8ebb4e1f8ff"
+                }
+            ]
+        },
+        {
+            "name": "idle37-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "org.python.idle37.png"
+                },
+                {
+                    "type": "file",
+                    "path": "org.python.idle37.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 org.python.idle37.desktop /app/share/applications/org.python.idle37.desktop",
+                "install -Dm644 org.python.idle37.png /app/share/icons/hicolor/256x256/apps/org.python.idle37.png"
+            ]
+        }
+    ]
+}
