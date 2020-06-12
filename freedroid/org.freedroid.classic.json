@@ -1,0 +1,65 @@
+{
+    "app-id": "org.freedroid.classic",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=pulseaudio",
+	"--persist=.freedroidClassic"
+    ],
+    "command": "freedroid",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        "shared-modules/SDL/SDL-1.2.15.json",
+        "shared-modules/SDL/SDL_image-1.2.12.json",
+        {
+            "name": "SDL_gfx",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/sdlgfx/SDL_gfx-2.0.25.tar.gz",
+                    "sha256": "556eedc06b6cf29eb495b6d27f2dcc51bf909ad82389ba2fa7bdc4dec89059c0"
+                }
+	    ]
+	},
+        {
+            "name": "freedroid-classic",
+            "buildsystem": "autotools",
+            "sources":
+            [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ReinhardPrix/FreedroidClassic.git"
+                },
+                {
+                    "type": "file",
+                    "path": "org.freedroid.classic.png"
+                },
+                {
+                    "type": "file",
+                    "path": "org.freedroid.classic.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "org.freedroid.classic.desktop"
+                }
+            ],
+            "post-install":
+	    [
+        	"install -Dm644 org.freedroid.classic.appdata.xml /app/share/appdata/org.freedroid.classic.appdata.xml",
+                "install -Dm644 org.freedroid.classic.desktop /app/share/applications/org.freedroid.classic.desktop",
+                "install -Dm644 org.freedroid.classic.png /app/share/icons/hicolor/256x256/apps/org.freedroid.classic.png"
+            ]
+	}
+    ]
+}
+

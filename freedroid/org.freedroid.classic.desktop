@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Freedroid Classic
+Comment=A remake of the classic Commodore 64 game
+Exec=freedroid --scale=1.5
+Icon=org.freedroid.classic
+Terminal=false
+Type=Application
+Categories=Game
+
