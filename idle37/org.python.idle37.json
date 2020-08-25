@@ -2,7 +2,7 @@
     "id": "org.python.idle37",
     "branch": "3.7.3",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "19.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "python3",
     "finish-args": [
@@ -10,6 +10,7 @@
         "--socket=wayland",
         "--socket=pulseaudio",
         "--share=ipc",
+        "--share=network",
         "--filesystem=home"
     ],
     "build-options": {
