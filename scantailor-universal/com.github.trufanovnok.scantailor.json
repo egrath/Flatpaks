@@ -1,10 +1,10 @@
 {
     "id": "com.github.trufanovnok.scantailor",
-    "branch": "0.2.8",
+    "branch": "master",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.14",
     "sdk": "org.kde.Sdk",
-    "command": "scantailor",
+    "command": "scantailor-universal",
     "finish-args": [
         "--socket=x11",
         "--socket=wayland",
@@ -27,10 +27,6 @@
             "aarch64": {
                 "no-debuginfo": false,
                 "strip": false
-            },
-            "arm": {
-                "no-debuginfo": false,
-                "strip": false
             }
         }
     },
@@ -46,8 +42,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz",
-                    "sha512": "4378e20f18db9f186ac0f38ad98c522526e0fe48a8deb968c41325e3f69e733be3298505e91ea713e79a9d9e741305fa879d289f74e6276e0ec7286f03be87fc"
+                    "url": "https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz",
+                    "sha512": "4df4590dd2f52d4ae1754ab649d5ec46f203742c38f3ab1df991079b33591dd9cf97d7d6d432b85ef4a658633f20b11c9c9c541266fe9c66588e7593c55d7173"
                 },
                 {
                     "type": "file",
@@ -62,9 +58,8 @@
             "builddir": true,
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/trufanov-nok/scantailor/archive/0.2.8.tar.gz",
-                    "sha512": "e4203419d9814e2eedaaed27051eae88dc77b98b248af79dd85258ef41f881c52a8e982fadc3d492074d60c0dc0a7810a015a4eaa9827dec02e9eff5bb086822"
+                    "type": "git",
+                    "url": "https://github.com/trufanov-nok/scantailor-universal.git"
                 }
             ]
         },

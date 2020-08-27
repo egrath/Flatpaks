@@ -1,0 +1,5 @@
+.flatpak-builder
+build_x86_64
+repo
+*.flatpak
+
