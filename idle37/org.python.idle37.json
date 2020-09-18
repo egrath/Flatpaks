@@ -2,10 +2,11 @@
     "id": "org.python.idle37",
     "branch": "3.7.3",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "19.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "python3",
     "finish-args": [
+	"--device=dri",
         "--socket=x11",
         "--socket=wayland",
         "--socket=pulseaudio",
@@ -18,7 +19,7 @@
     },
     "modules": [
         {
-            "name": "tcl869",
+            "name": "tcl-8-6-10",
             "buildsystem": "autotools",
             "subdir": "unix",
             "config-opts": [
@@ -27,13 +28,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "ftp://ftp.tcl.tk/pub/tcl/tcl8_6/tcl8.6.9-src.tar.gz",
-                    "sha256": "ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e"
+                    "url": "ftp://ftp.tcl.tk/pub/tcl/tcl8_6/tcl8.6.10-src.tar.gz",
+                    "sha512": "c89b886e483320a284033de51b5363758ef4748d6248ae73eb8e90fbe76c180395f485135ca9bf1246dd567159a77ffc1e8cb537bc2fc4a09b01448928d0afd7"
                 }
             ]
         },
         {
-            "name": "tk869",
+            "name": "tk-8-6-10",
             "buildsystem": "autotools",
             "subdir": "unix",
             "config-opts": [
@@ -43,13 +44,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "ftp://ftp.tcl.tk/pub/tcl/tcl8_6/tk8.6.9.1-src.tar.gz",
-                    "sha256": "8fcbcd958a8fd727e279f4cac00971eee2ce271dc741650b1fc33375fb74ebb4"
+                    "url": "ftp://ftp.tcl.tk/pub/tcl/tcl8_6/tk8.6.10-src.tar.gz",
+                    "sha512": "d12ef3a5bde9e10209a24e9f978bd23360a979d8fa70a859cf750a79ca51067a11ef6df7589303b52fe2a2baed4083583ddaa19e2c7cb433ea523639927f1be5"
                 }
             ]
         },
         {
-            "name": "python37",
+            "name": "python-3-7-3",
             "buildsystem": "autotools",
             "builddir": true,
             "config-opts": [
@@ -62,7 +63,7 @@
                 {
                     "type": "archive",
                     "url": "https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz",
-                    "sha256": "d62e3015f2f89c970ac52343976b406694931742fbde2fed8d1ce8ebb4e1f8ff"
+                    "sha512": "c87be001f3de677f7838cc7767beefe5781d3d5e4ba39abb8dba1d77ce4a334660e27ed2dfd26bc90afcdb94b5b8a3a7aea329852557404d1c85cb2c268651db"
                 }
             ]
         },
