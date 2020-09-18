@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.wxmaxima-developers",
-    "branch": "20.07.0",
+    "branch": "20.09.0",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.36",
+    "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -119,12 +119,13 @@
         },
         {
             "name": "wxmaxima",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/Version-20.07.0.tar.gz",
-                    "sha512": "7272df5314ac79248154ee899397361da0570a6188ddc464b0479d2d6ac556ddf3941cf1ac17c9e6642e77d79a8458b902e70513dfdea15bc6a6d36d76b0bec2"
+                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/Version-20.09.0.zip",
+                    "sha512": "b6f882cf5fe4a6238ae81b506428640edd302ce9ca7dbc208f76e58f496dfccd919ef4709b574dc7168e1697e23e2bef93eccd9e44031b41ea489cd8bc866bcc"
                 }
             ]
         },
