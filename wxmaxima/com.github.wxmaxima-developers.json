@@ -81,7 +81,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gigenet.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.0/gnuplot-5.4.0.tar.gz",
+                    "url": "https://netix.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.0/gnuplot-5.4.0.tar.gz",
                     "sha512": "abbb69ded9eed3a1e53caeeb7d75ee4e3532b1254640a3f38f00260e261e75f87744e3df4210b0db7c8c2acee9b25147524d5377b3f4305e2449b2e99ca58d66"
                 }
             ]
@@ -97,7 +97,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gigenet.dl.sourceforge.net/project/maxima/Maxima-source/5.44.0-source/maxima-5.44.0.tar.gz",
+                    "url": "https://netix.dl.sourceforge.net/project/maxima/Maxima-source/5.44.0-source/maxima-5.44.0.tar.gz",
                     "sha512": "1e043bebb7c6d002c113d8de20a98d58d1a8e7bedfc9bcf52819e7c7554655991dc2f42f0333889706574249736db833a237b3e59b967e7e42ede28262e31f2f"
                 }                
             ]
