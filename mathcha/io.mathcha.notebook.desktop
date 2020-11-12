@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Mathcha Notebook
+Exec=/app/bin/run.sh
+Icon=io.mathcha.notebook
+Categories=Office
+

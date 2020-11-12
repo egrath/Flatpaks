@@ -1,0 +1,66 @@
+{
+    "id": "io.mathcha.notebook",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "20.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "run.sh",
+    "finish-args": [
+        "--filesystem=home",
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=wayland"
+    ],
+    "modules": [
+        {
+            "name": "mathcha-appimage",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Converting AppImage to Flatpak",
+                "./build.sh",
+                "echo Finished build process"
+            ],
+            "build-options": {
+                "no-debuginfo": true
+            },
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://notebook-downloads.mathcha.io/public/math-notebook-latest.AppImage",
+                    "sha256": "3b723faf28540239d762ce766f7cdd2704681462ac72b784d79ae8173eb22bfa"
+                },
+                {
+                    "type": "script",
+                    "commands": [
+                        "#!/usr/bin/env sh",
+                        "math-notebook --no-sandbox $@"
+                    ],
+                    "dest-filename": "run.sh"
+                },
+                {
+                    "type": "script",
+                    "commands": [
+                        "chmod +x math-notebook-latest.AppImage",
+                        "./math-notebook-latest.AppImage --appimage-extract",
+                        "mkdir -p /app/share/icons/hicolor",
+                        "mkdir -p /app/bin",
+                        "cp -vra squashfs-root/usr/share/icons/hicolor/* /app/share/icons/hicolor/",
+                        "cp -vra squashfs-root/* /app/bin/",
+                        "for i in /app/share/icons/hicolor/*/apps/*",
+                        "do",
+                        "   mv ${i} $(sed s/math-notebook/io\\.mathcha\\.notebook/g <<< ${i})",
+                        "done",
+                        "install -Dm755 run.sh /app/bin/run.sh",
+                        "install -Dm644 io.mathcha.notebook.desktop /app/share/applications/io.mathcha.notebook.desktop"    
+                    ],
+                    "dest-filename": "build.sh"
+                },
+                {
+                    "type": "file",
+                    "path": "io.mathcha.notebook.desktop"
+                }
+            ]
+        }
+    ]
+}
