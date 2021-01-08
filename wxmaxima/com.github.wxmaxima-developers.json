@@ -1,6 +1,6 @@
 {
     "app-id": "com.github.wxmaxima-developers",
-    "branch": "20.09.0",
+    "branch": "20.12.2",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.38",
     "sdk": "org.gnome.Sdk",
@@ -24,7 +24,7 @@
         "/share/applications/xmaxima.desktop",
         "/share/info/xmaxima.info",
         "/lib/wx",
-        "/app/share/bakefile",        
+        "/app/share/bakefile",
         "*.la", "*.a"
     ],
     "build-options": {
@@ -33,8 +33,8 @@
     },
     "modules": [
         "shared-modules/intltool/intltool-0.51.json",
-	    "shared-modules/glu/glu-9.json",	    
-	    "shared-modules/gtk2/gtk2.json",	    
+	    "shared-modules/glu/glu-9.json",
+	    "shared-modules/gtk2/gtk2.json",
         {
             "name": "wxwidgets",
             "buildsystem": "autotools",
@@ -81,8 +81,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://netix.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.0/gnuplot-5.4.0.tar.gz",
-                    "sha512": "abbb69ded9eed3a1e53caeeb7d75ee4e3532b1254640a3f38f00260e261e75f87744e3df4210b0db7c8c2acee9b25147524d5377b3f4305e2449b2e99ca58d66"
+                    "url": "https://netix.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.1/gnuplot-5.4.1.tar.gz",
+                    "sha512": "2371830636d4c9ee93e9d6566dc2889e96ece3660b63ef4cfb6514e233510e5abaf4f93863bbe9a418f11db8e3b12a15242556aae52bb69591ad7d26e6581121"
                 }
             ]
         },
@@ -92,14 +92,14 @@
             "config-opts": [
                 "--enable-ecl",
                 "--enable-mathjax",
-                "--enable-gettext"              
+                "--enable-gettext"
             ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://netix.dl.sourceforge.net/project/maxima/Maxima-source/5.44.0-source/maxima-5.44.0.tar.gz",
                     "sha512": "1e043bebb7c6d002c113d8de20a98d58d1a8e7bedfc9bcf52819e7c7554655991dc2f42f0333889706574249736db833a237b3e59b967e7e42ede28262e31f2f"
-                }                
+                }
             ]
         },
         {
@@ -113,9 +113,9 @@
                     "type": "archive",
                     "url": "https://www.mpim-bonn.mpg.de/webfm_send/38",
                     "dest-filename": "jsmath-fonts-all.zip",
-                    "sha256": "5d07d56fce654eb5c67d647a87ad88003c327fae20962d52e51579034b863b88"
+                    "sha512": "f390d34a4dd5f0fe5fac7587ff69ccf44ca48210a60f86f8cd707c8051c9ae49ddc537e2c4bdf7e4bfc9324f1b77ef110af3777da0fb900d101142e2ccbf40e1"
                 }
-            ]         
+            ]
         },
         {
             "name": "wxmaxima",
@@ -124,8 +124,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/Version-20.09.0.zip",
-                    "sha512": "b6f882cf5fe4a6238ae81b506428640edd302ce9ca7dbc208f76e58f496dfccd919ef4709b574dc7168e1697e23e2bef93eccd9e44031b41ea489cd8bc866bcc"
+                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/Version-20.12.2.tar.gz",
+                    "sha512": "1c3e3f68a2fa2cd798dfb05c52e7ddf3193a15cb45282553c280914bd524d463ad27acc89898cb4a292ff236699d1ec2abb70d83fa52cb126123ab8e2fcd5ceb"
                 }
             ]
         },
@@ -149,7 +149,6 @@
                 "install -p -D -m 0664 com.github.wxmaxima-developers.desktop -t /app/share/applications",
                 "install -p -D -m 0664 com.github.wxmaxima-developers.svg -t /app/share/icons/hicolor/256x256/apps"
             ]
-        }        
+        }
     ]
 }
-
