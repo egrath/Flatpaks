@@ -1,4 +1,8 @@
 .flatpak-builder
+<<<<<<< HEAD
+=======
+build
+>>>>>>> 28c81146a5c96cfe8c94ce3a07c8d321186d901a
 build_x86_64
 build_aarch64
 repo
