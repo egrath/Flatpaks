@@ -1,6 +1,6 @@
 {
   "app-id": "com.github.hneemann.digital",
-  "branch": "0.25",
+  "branch": "0.26",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "20.08",
   "sdk": "org.freedesktop.Sdk",
@@ -56,8 +56,8 @@
             "sources" : [
                 {
                     "type": "archive",
-                    "url": "https://github.com/hneemann/Digital/releases/download/v0.25/Digital.zip",
-                    "sha512": "ff785e3cc4d805af6f7daf54a144bbbc6d497da6a467d3d4120a161ad05445fa8bfafe0aaf0298076367753fc2d534bae9bc561f95e2a4ee149a07efdc470b41"
+                    "url": "https://github.com/hneemann/Digital/releases/download/v0.26/Digital.zip",
+                    "sha512": "2fab3fa52bb68b8650dd01f8cac5d45482b3d7ff9a0c9bda15d9e4c1a8c1a7f5f339f4029234cf8ea2449245fd1066261ecd3bfc4d7be2ca4f26c33ca941bdd6"
                 },
                 {
                     "type": "script",
@@ -66,7 +66,7 @@
                         "#!/bin/sh",
                         "export JAVA_HOME=/app/jre",
                         "export JAVA=${JAVA_HOME}/bin/java",
-                        "export _JAVA_OPTIONS=\"-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=True\"",
+			"export _JAVA_OPTIONS=\"-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=True -Dswing.systemlaf=javax.swing.plaf.metal.MetalLookAndFeel -Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel -Dswing.plaf.metal.controlFont=sans-bold-18 -Dswing.plaf.metal.userFont=sans-bold-18\"",
                         "${JAVA} -jar $(dirname $0)/Digital.jar"
                     ]
                 }
