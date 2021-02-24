@@ -63,15 +63,8 @@
                     "sha512": "2fab3fa52bb68b8650dd01f8cac5d45482b3d7ff9a0c9bda15d9e4c1a8c1a7f5f339f4029234cf8ea2449245fd1066261ecd3bfc4d7be2ca4f26c33ca941bdd6"
                 },
                 {
-                    "type": "script",
-                    "dest-filename": "Digital.sh",
-                    "commands": [
-                        "#!/bin/sh",
-                        "export JAVA_HOME=/app/jre",
-                        "export JAVA=${JAVA_HOME}/bin/java",
-			"export _JAVA_OPTIONS=\"-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=True -Dswing.systemlaf=javax.swing.plaf.metal.MetalLookAndFeel -Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel -Dswing.plaf.metal.controlFont=sans-bold-18 -Dswing.plaf.metal.userFont=sans-bold-18\"",
-                        "${JAVA} -jar $(dirname $0)/Digital.jar"
-                    ]
+                    "type": "file",
+                    "path": "Digital.sh"
                 }
             ]
         }
