@@ -1,8 +1,8 @@
 {
     "id": "com.github.trufanovnok.scantailor",
-    "branch": "master",
+    "branch": "0.2.11",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.14",
+    "runtime-version": "5.15",
     "sdk": "org.kde.Sdk",
     "command": "scantailor-universal",
     "finish-args": [
@@ -14,6 +14,8 @@
     "cleanup": [
         "/include",
         "/lib/pkgconfig",
+        "/lib/openjpeg-2.4",
+        "/lib/debug",
         "/share/aclocal",
         "/share/man",
         "*.la", "*.a"
@@ -42,8 +44,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz",
-                    "sha512": "4df4590dd2f52d4ae1754ab649d5ec46f203742c38f3ab1df991079b33591dd9cf97d7d6d432b85ef4a658633f20b11c9c9c541266fe9c66588e7593c55d7173"
+                    "url": "https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.bz2",
+                    "sha512": "d86f060245e98dca5c7f3f831c98ea9ccbfa8310f20830dd913d9d4c939fbe7cb94accd35f1128e7c4faf6c27adb6f4bb54e5477a6bde983dfc7aa33c4eed03a"
                 },
                 {
                     "type": "file",
@@ -53,13 +55,40 @@
             ]
         },
         {
+            "name": "openjpeg",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz",
+                    "sha512": "55daab47d33823af94e32e5d345b52c251a5410f0c8e0a13b693f17899eedc8b2bb107489ddcba9ab78ef17dfd7cd80d3c5ec80c1e429189cb041124b67e07a8" 
+                }
+            ]
+        },
+        {
+            "name": "libcanberra",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--disable-oss",
+                "--with-systemdsystemunitdir=/app/lib/systemd"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz",
+                    "sha512": "f7543582122256826cd01d0f5673e1e58d979941a93906400182305463d6166855cb51f35c56d807a56dc20b7a64f7ce4391368d24990c1b70782a7d0b4429c2"
+                }
+            ]
+        },
+        {
             "name": "scantailor-universal",
             "buildsystem": "cmake",
             "builddir": true,
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/trufanov-nok/scantailor-universal.git"
+                    "type": "archive",
+                    "url": "https://github.com/trufanov-nok/scantailor-universal/archive/0.2.11.tar.gz",
+                    "sha512": "693fd590271b5cc23dc697077c564b0728b1c6debf2d776b51d885d6e731e7df651f9ff80b1a9be4ab7107188f3e344b4cbdc7d96f2a761c31003cf3e94ba5f3"
                 }
             ]
         },
