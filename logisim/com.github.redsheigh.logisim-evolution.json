@@ -1,8 +1,8 @@
 {
   "app-id": "com.github.redsheigh.logisim-evolution",
-  "branch": "2.15.0",
+  "branch": "3.4.1",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "19.08",
+  "runtime-version": "20.08",
   "sdk": "org.freedesktop.Sdk",
   "sdk-extensions": [
       "org.freedesktop.Sdk.Extension.openjdk"
@@ -19,25 +19,34 @@
       {
           "name" : "openjdk",
           "buildsystem" : "simple",
-          "build-commands" : [ "/usr/lib/sdk/openjdk/install.sh" ]
+          "build-commands" : [
+            "/usr/lib/sdk/openjdk/install.sh"
+          ]
       },
       {
           "name": "logisim-evolution",
-          "no-autogen": true,
+          "buildsystem": "simple",
+          "build-commands": [
+              "install -Dm755 logisim-evolution.jar /app/bin/logisim-evolution.jar",
+              "install -Dm755 logisim-evolution.sh /app/bin/logisim-evolution.sh"
+          ],    
           "sources" : [
               {
                   "type": "file",
-                  "url": "https://github.com/reds-heig/logisim-evolution/releases/download/v2.15.0/logisim-evolution.jar",
-                  "sha256": "2d56d01a692e26dd2e5c19a6139ed66d9352fb4bc2c81171b2153b9099cfd91d"
+                  "url": "https://github.com/reds-heig/logisim-evolution/releases/download/v3.4.1/logisim-evolution-3.4.1-all.jar",
+                  "dest-filename": "logisim-evolution.jar",
+                  "sha512": "98c60d5444604b76809376e2ea9306aa4103202ee9c553820ba530064d3fa099e8cc7673ecaa0592a14cee450b8da11ac0270e41971d6a216e11f9ebc1630959"
               },
               {
-                  "type": "file",
-                  "path": "logisim-evolution.sh"
-              },
-              {
-                  "type": "file",
-                  "path": "logisim-evolution.makefile",
-                  "dest-filename": "Makefile"
+                  "type": "script",
+                  "commands": [
+                      "#!/bin/bash",
+                      "export JAVA_HOME=/app/jre",
+                      "export JAVA=${JAVA_HOME}/bin/java",
+                      "export JAVA_OPTIONS=\"-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=True -Dswing.systemlaf=javax.swing.plaf.metal.MetalLookAndFeel -Dswing.defaultlaf=javax.swing.plaf.metal.MetalLookAndFeel -Dswing.plaf.metal.controlFont=sans-bold-18 -Dswing.plaf.metal.userFont=sans-bold-18\"",
+                      "${JAVA} -jar $(dirname $0)/logisim-evolution.jar"
+                  ],
+                  "dest-filename": "logisim-evolution.sh"
               }
           ]
       },
