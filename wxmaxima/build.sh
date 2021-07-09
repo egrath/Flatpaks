@@ -28,7 +28,7 @@ git submodule update
 #git submodule update --remote --merge
 
 # build 
-COMMAND="flatpak-builder --arch=${ARCH} --repo=repo --force-clean --install-deps-from=flathub build_${ARCH} ${NAME}.json"
+COMMAND="flatpak-builder --arch=${ARCH} --repo=repo --force-clean --user --install-deps-from=flathub build_${ARCH} ${NAME}.json"
 
 echo running: ${COMMAND}
 ${COMMAND}
