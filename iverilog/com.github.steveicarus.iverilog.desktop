@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=iverilog Shell
+Type=Application
+Exec=/bin/sh -c "cat /app/readme.txt; /bin/sh"
+Terminal=true
+Icon=com.github.steveicarus.iverilog.png
+

@@ -1,0 +1,201 @@
+{
+    "id": "com.github.steveicarus.iverilog",
+    "branch": "11.0",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.38",
+    "sdk": "org.gnome.Sdk",
+    "build-options": {
+        "no-debuginfo": true,
+        "strip": true
+    },
+    "cleanup": [
+        "/include",
+        "/lib64"
+    ],
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--filesystem=home",
+        "--share=network"       /* for accessing remote X displays */
+    ],
+    "command": "/bin/sh",
+    "modules": [
+        {
+            "name": "iverilog",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "script",
+                    "commands": [
+                        "#!/bin/sh",
+                        "autoconf"
+                    ]
+                },
+                {
+                    "type": "archive",
+                    "url": "https://github.com/steveicarus/iverilog/archive/refs/tags/v11_0.tar.gz",
+                    "sha512": "5d6a65e1c3b6b62e99af708cd5a259cc69c6b789dd6eff69e225903d9b8c115d9e5d6f7635b30c6558197cd0ee6fd8196a163fbd98956e24c211d97328b85056"
+                }
+            ]
+        },
+        {
+            "name": "gperf",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnu.org/pub/gnu/gperf/gperf-3.1.tar.gz",
+                    "sha512": "855ebce5ff36753238a44f14c95be7afdc3990b085960345ca2caf1a2db884f7db74d406ce9eec2f4a52abb8a063d4ed000a36b317c9a353ef4e25e2cca9a3f4"
+                }
+            ]
+        },
+        {
+            "name": "gtkwave",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--with-gsettings",
+                "--enable-gtk3",
+                "--disable-tcl"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://gtkwave.sourceforge.net/gtkwave-gtk3-3.3.110.tar.gz",
+                    "sha512": "43a558693069f1b1769aa6f91d03c3465c235c6419d1d8ea8240b83c25c0818df54d34443789432063f96c32dba5749f2eac6e429f242bdd1a663da4dc981b28"
+                }
+            ]
+        },
+        {
+            "name": "graphviz",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--enable-swig=no",
+                "--enable-sharp=no",
+                "--enable-go=no",
+                "--enable-guile=no",
+                "--enable-java=no",
+                "--enable-lua=no",
+                "--enable-ocaml=no",
+                "--enable-perl=no",
+                "--enable-php=no",
+                "--enable-python=no",
+                "--enable-python3=no",
+                "--enable-r=no",
+                "--enable-ruby=no",
+                "--enable-tcl=no"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/2.48.0/graphviz-2.48.0.tar.gz",
+                    "sha512": "082de53242f81aa95b68fc50d56b135a6f4be99a745ad630e616ef684ab869a44fb2913b7cb686e63fbca38909c0cc3b1956a8192cc75e0330e9abfbcf28993b"
+                }
+            ]
+        },
+        {
+            "name": "yosys",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo building yosys ... or at least trying",
+                "echo CONFIG := gcc >> Makefile.conf",
+                "echo PREFIX := /app >> Makefile.conf",
+                "echo ENABLE_TCL := 0 >> Makefile.conf",
+                "echo ENABLE_ABC := 0 >> Makefile.conf",
+                "make -j $(nproc)",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/YosysHQ/yosys/archive/refs/tags/yosys-0.9.tar.gz",
+                    "sha512": "6ae0f822ca0e3ec749773dae89e948488b698aaa149e73f04604dd899ac403a3073645f0e27382801f5f1a9483d87ef4066fde5dc797181eff06684de7a5b138"
+                }
+            ]
+        },
+        {
+            "name": "libusb",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libusb/libusb/releases/download/v1.0.24/libusb-1.0.24.tar.bz2",
+                    "sha512": "5aea36a530aaa15c6dd656d0ed3ce204522c9946d8d39ffbb290dab4a98cda388a2598da4995123d1032324056090bd429e702459626d3e8d7daeebc4e7ff3dc"
+                }
+            ]
+        },
+        {
+            "name": "libftdi",
+            "buildsystem": "cmake",            
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.4.tar.bz2",
+                    "sha512": "dbab74f7bc35ca835b9c6dd5b70a64816948d65da1f73a9ece37a0f0f630bd0df1a676543acc517b02a718bc34ba4f7a30cbc48b6eed1c154c917f8ef0a358fc"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 src/ftdi.h /app/include/ftdi.h", /* workaround for icetools hardcoded path */
+                "install -Dm755 src/libftdi1.so.2.4.0 /app/lib/libftdi1.so",
+                "ln -s /app/lib/libftdi1.so /app/lib/libftdi.so",
+                "ln -s /app/lib/libftdi1.so /app/lib/libftdi1.so.2",
+                "ln -s /app/lib/libftdi1.so /app/lib/libftdi1.so.2.4.0"
+            ]
+        },
+        {
+            "name": "icetools",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo building icetools ...",
+                "PREFIX=/app make -j $(nproc)",
+                "PREFIX=/app make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/YosysHQ/icestorm.git"
+                }
+            ]
+        },
+        {
+            "name": "arachne-pnr",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo building arachne-pnr ...",
+                "PREFIX=/app make -j $(nproc)",
+                "PREFIX=/app make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/YosysHQ/arachne-pnr.git"
+                }
+            ]
+        },
+        {
+            "name": "iverilog-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo installing desktop integration"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.steveicarus.iverilog.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.steveicarus.iverilog.png"
+                },
+                {
+                    "type": "file",
+                    "path": "readme.txt"
+                }
+            ],
+            "post-install": [
+                "install -p -D -m 0755 com.github.steveicarus.iverilog.desktop -t /app/share/applications",
+                "install -p -D -m 0664 com.github.steveicarus.iverilog.png -t /app/share/icons/hicolor/256x256/apps",
+                "install -p -D -m 0644 readme.txt /app"                
+            ]
+        }
+    ]
+}
