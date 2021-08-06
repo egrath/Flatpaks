@@ -16,7 +16,8 @@
         "--socket=x11",
         "--socket=wayland",
         "--filesystem=home",
-        "--share=network"       /* for accessing remote X displays */
+        "--share=network",       /* for accessing remote X displays */
+        "--device=all"           /* for programming the fpga */
     ],
     "command": "/bin/sh",
     "modules": [
