@@ -94,6 +94,19 @@
             ]
         },
         {
+            "name": "xdot",
+            "build-options": {
+                "build-args": [
+                    "--share=network"
+                ]
+            },            
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo fetching xdot ...",
+                "pip3 install --prefix=/app xdot numpy"
+            ]
+        },
+        {
             "name": "yosys",
             "buildsystem": "simple",
             "build-commands": [
