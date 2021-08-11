@@ -28,7 +28,7 @@ RELEASE=$(cat ${NAME}.json | grep "branch" | awk -F '\"' '{print $4}')
 #git submodule update --remote --merge
 
 # build 
-COMMAND="flatpak-builder --arch=${ARCH} --repo=repo --force-clean --install-deps-from=flathub build_${ARCH} ${NAME}.json"
+COMMAND="flatpak-builder --arch=${ARCH} --repo=repo --force-clean build_${ARCH} ${NAME}.json"
 
 echo running: ${COMMAND}
 ${COMMAND}
