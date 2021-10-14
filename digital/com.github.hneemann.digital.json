@@ -2,7 +2,7 @@
   "app-id": "com.github.hneemann.digital",
   "branch": "0.28",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "20.08",
+  "runtime-version": "21.08",
   "sdk": "org.freedesktop.Sdk",
   "sdk-extensions": [
       "org.freedesktop.Sdk.Extension.openjdk"
@@ -51,10 +51,11 @@
                 "echo Building Digital",
                 "mkdir -p /app/bin",
                 "mkdir -p /app/share/Digital",
-                "install -Dm755 Digital.jar /app/bin/Digital.jar",
-                "install -Dm755 Digital.sh /app/bin/Digital.sh",
                 "cp -r docu /app/share/Digital",
-                "cp -r examples /app/share/Digital"
+                "cp -r examples /app/share/Digital",
+                "cp -r lib /app/bin",
+                "install -Dm755 Digital.jar /app/bin/Digital.jar",
+                "install -Dm755 Digital.sh /app/bin/Digital.sh"               
             ],
             "sources" : [
                 {
@@ -80,9 +81,8 @@
                     ]
                 },
                 {
-                    "type": "archive",
-                    "url": "https://github.com/steveicarus/iverilog/archive/refs/tags/v11_0.tar.gz",
-                    "sha512": "5d6a65e1c3b6b62e99af708cd5a259cc69c6b789dd6eff69e225903d9b8c115d9e5d6f7635b30c6558197cd0ee6fd8196a163fbd98956e24c211d97328b85056"
+                    "type": "git",
+                    "url": "https://github.com/steveicarus/iverilog.git"
                 }
             ]
         }
