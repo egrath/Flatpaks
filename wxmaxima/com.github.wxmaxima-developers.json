@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.wxmaxima-developers",
-    "branch": "21.05.2",
+    "branch": "21.11.0",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.38",
+    "runtime-version": "41",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -32,13 +32,10 @@
         "no-debuginfo": true
     },
     "modules": [
-        "shared-modules/intltool/intltool-0.51.json",
-	    "shared-modules/glu/glu-9.json",
-	    "shared-modules/gtk2/gtk2.json",
+	    "../shared-modules/glu/glu-9.json",
         {
             "name": "wxwidgets",
             "buildsystem": "autotools",
-            "rm-configure": true,
             "config-opts": [
                 "--with-libpng",
                 "--with-libjpeg",
@@ -46,15 +43,14 @@
                 "--with-zlib",
                 "--enable-stc",
                 "--with-opengl",
-                "--disable-webkit",
                 "--disable-webview",
                 "--disable-ribbon"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.4/wxWidgets-3.1.4.tar.bz2",
-                    "sha512": "aabb257fa222eb819f1e16086977b0ecfd3eb3406d695e0e642ffdb8b4dc586a9721404916be4756a2d92a1a8dc41b661b54717a64e03850a8a92d32d45ece14"
+                    "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2",
+                    "sha512": "ce9c31f0c502135839330150ec08724d69b64910d3e1d3dc11eb587b079bb8bdedd515ff980e7992c68ff1ba59d962353a079ee72a19a03923fc4755826714c9"
                 }
             ]
         },
@@ -124,8 +120,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/Version-21.05.2.tar.gz",
-                    "sha512": "a5d7832d224bad0963a86d3714172d51b67a1c8daf933e66b6c7817da102f942e37aa2a31d8f0f1e27438b61b1ba2705af333edcf2c33a53fdeec318fe837ff6"
+                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-21.11.0.tar.gz",
+                    "sha512": "1660537d475dc16e6d25011ae02b50a9179dd97b19dd115e914636fac71684906d77a2e4f4ab2d8506ac9f6b297de8feeeb46489a6dbf5782783f890a4181506"
                 }
             ]
         },

@@ -1,6 +1,3 @@
-[submodule "wxmaxima/shared-modules"]
-	path = wxmaxima/shared-modules
-	url = https://github.com/flathub/shared-modules.git
-[submodule "dosbox-x/shared-modules"]
-	path = dosbox-x/shared-modules
+[submodule "shared-modules"]
+	path = shared-modules
 	url = https://github.com/flathub/shared-modules.git
