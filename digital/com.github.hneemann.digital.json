@@ -1,6 +1,6 @@
 {
   "app-id": "com.github.hneemann.digital",
-  "branch": "0.28",
+  "branch": "0.29",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "21.08",
   "sdk": "org.freedesktop.Sdk",
@@ -60,8 +60,8 @@
             "sources" : [
                 {
                     "type": "archive",
-                    "url": "https://github.com/hneemann/Digital/releases/download/v0.28/Digital.zip",
-                    "sha512": "4c465601d8e0fb0372f5ad026760ce19b7f31f812c99cb612ea0c7e681667f7bbe1739f689da06d7a6ee109f8152e6a421d9ab1d718841a5f18a20e13fd22ebc"
+                    "url": "https://github.com/hneemann/Digital/releases/download/v0.29/Digital.zip",
+                    "sha512": "7d7864bda32fe55e91da156dcdbcd0999aa95d158f272f0d3bd34550ebf8e027e1e7172318733332779ffcaa6b7d520f4449a8ce41a7c3c8817e411f8b82f054"
                 },
                 {
                     "type": "file",
