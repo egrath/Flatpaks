@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.wxmaxima-developers",
-    "branch": "21.11.0",
+    "branch": "22.05.0",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "41",
+    "runtime-version": "42",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -49,8 +49,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.5/wxWidgets-3.1.5.tar.bz2",
-                    "sha512": "ce9c31f0c502135839330150ec08724d69b64910d3e1d3dc11eb587b079bb8bdedd515ff980e7992c68ff1ba59d962353a079ee72a19a03923fc4755826714c9"
+                    "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.7/wxWidgets-3.1.7.tar.bz2",
+                    "sha512": "1e81ac2ac9f762fb2820521b858ee5e8431003fa5a2ca5dab6b13fa60937aef2396cd9ddb6cb003d13c97183cb938185090adbe2fa76bed75cf4e4ade396fd6c"
                 }
             ]
         },
@@ -77,8 +77,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://netix.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.1/gnuplot-5.4.1.tar.gz",
-                    "sha512": "2371830636d4c9ee93e9d6566dc2889e96ece3660b63ef4cfb6514e233510e5abaf4f93863bbe9a418f11db8e3b12a15242556aae52bb69591ad7d26e6581121"
+                    "url": "https://deac-fra.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.3/gnuplot-5.4.3.tar.gz",
+                    "sha512": "fc35ab68a992acc8e35402c89cb7704c0efe117ec1fb272739d4378289d6c5a2e8f4b747b339fca916e559453547f2405863fb52038576883f0d5643a7220b5e"
                 }
             ]
         },
@@ -93,8 +93,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://netix.dl.sourceforge.net/project/maxima/Maxima-source/5.45.1-source/maxima-5.45.1.tar.gz",
-                    "sha512": "08e7a2b24324c0f0dda127d291b9d439125fa1324732b17c804c3eb68d35f87e3fc713c147472821a1781e6378b7afb0721d5da907826324ec3d24848251b7cf"
+                    "url": "https://nav.dl.sourceforge.net/project/maxima/Maxima-source/5.46.0-source/maxima-5.46.0.tar.gz",
+                    "sha512": "6c76292ac270b9d8e91d13035733d12038a69ef3510e70a28793b6116208eccd7bf6387e246e9e8c0a22a2e793b948f1233a56fc863ad8712a35e5b1b92fbeef"
                 }
             ]
         },
@@ -120,8 +120,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-21.11.0.tar.gz",
-                    "sha512": "1660537d475dc16e6d25011ae02b50a9179dd97b19dd115e914636fac71684906d77a2e4f4ab2d8506ac9f6b297de8feeeb46489a6dbf5782783f890a4181506"
+                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-22.05.0.tar.gz",
+                    "sha512": "e78ce86d3265b8c5d1d9b110075bdc8e3ff180a0a017142f852b022a1984e7e9bf0a4b7d2fb829f8c87b09899ef57a6e8ee203ec7edac52e7d05f0a05d2c9fe8"
                 }
             ]
         },
