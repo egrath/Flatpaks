@@ -1,0 +1,52 @@
+{
+    "app-id": "io.github.gcmd",
+    "branch": "1.14.3",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.38",
+    "sdk": "org.gnome.Sdk",
+    "finish-args": [
+        "--device=all",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--filesystem=host"
+    ],
+    "command": "gnome-commander",
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        "shared-modules/gtk2/gtk2.json",
+        {  
+            "name": "gnome-commander",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-commander/1.14/gnome-commander-1.14.3.tar.xz",
+                    "sha256": "78d8dce70fb922b2909cf767783053b0811213a4d6a49b3875510cf3a84efd7b"
+                }
+            ]
+        },
+        {
+            "name": "gnome-commander-desktopintegration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Desktop integration ..."
+            ],
+            "post-install": [
+                "install -Dm644 ${FLATPAK_DEST}/share/applications/org.gnome.gnome-commander.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop",
+                "install -Dm644 ${FLATPAK_DEST}/share/pixmaps/gnome-commander.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg",
+                "desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+            ]
+        }
+    ]
+}
