@@ -2,10 +2,10 @@
   "app-id": "com.github.hneemann.digital",
   "branch": "0.29",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "21.08",
+  "runtime-version": "22.08",
   "sdk": "org.freedesktop.Sdk",
   "sdk-extensions": [
-      "org.freedesktop.Sdk.Extension.openjdk"
+      "org.freedesktop.Sdk.Extension.openjdk17"
   ],
   "command": "Digital.sh",
   "finish-args": [
@@ -20,30 +20,8 @@
         {
             "name" : "openjdk",
             "buildsystem" : "simple",
-            "build-commands" : [ "/usr/lib/sdk/openjdk/install.sh" ]
-        },
-        {
-            "name": "digital-desktop-integration",
-            "buildsystem": "simple",
-            "build-commands": [
-                "echo installing desktop integration files"
-            ],            
-            "sources": [
-                {
-                    "type": "file",
-                    "path": "com.github.hneemann.digital.png"
-                },
-                {
-                    "type": "file",
-                    "path": "com.github.hneemann.digital.desktop"
-                }
-            ],
-            "post-install": [
-                "install -Dm644 com.github.hneemann.digital.desktop /app/share/applications/com.github.hneemann.digital.desktop",
-                "install -Dm644 com.github.hneemann.digital.png /app/share/icons/hicolor/256x256/apps/com.github.hneemann.digital.png"
-            ]
-
-        },        
+            "build-commands" : [ "/usr/lib/sdk/openjdk17/install.sh" ]
+        },      
         {
             "name": "digital",
             "buildsystem": "simple",
@@ -85,6 +63,28 @@
                     "url": "https://github.com/steveicarus/iverilog.git"
                 }
             ]
-        }
+        },
+        {
+            "name": "digital-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo installing desktop integration files"
+            ],            
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "com.github.hneemann.digital.png"
+                },
+                {
+                    "type": "file",
+                    "path": "com.github.hneemann.digital.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 com.github.hneemann.digital.desktop /app/share/applications/com.github.hneemann.digital.desktop",
+                "install -Dm644 com.github.hneemann.digital.png /app/share/icons/hicolor/256x256/apps/com.github.hneemann.digital.png"
+            ]
+
+        }       
     ]
 }
