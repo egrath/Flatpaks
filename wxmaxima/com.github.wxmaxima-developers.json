@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.wxmaxima-developers",
-    "branch": "22.09.0",
+    "branch": "23.05.0",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "41",
     "sdk": "org.gnome.Sdk",
     "finish-args": [
         "--device=dri",
@@ -37,20 +37,24 @@
             "name": "wxwidgets",
             "buildsystem": "autotools",
             "config-opts": [
+                "--enable-monolithic",
+                "--enable-stl",
                 "--with-libpng",
                 "--with-libjpeg",
                 "--with-libtiff",
+                "--with-liblzma",
                 "--with-zlib",
+                "--with-opengl",                
                 "--enable-stc",
                 "--enable-webview",
-                "--with-opengl",
+                "--enable-webviewwebkit",
                 "--disable-ribbon"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.7/wxWidgets-3.1.7.tar.bz2",
-                    "sha512": "1e81ac2ac9f762fb2820521b858ee5e8431003fa5a2ca5dab6b13fa60937aef2396cd9ddb6cb003d13c97183cb938185090adbe2fa76bed75cf4e4ade396fd6c"
+                    "url": "https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.2.1/wxWidgets-3.2.2.1.tar.bz2",
+                    "sha512": "289d61ea2abd75a329aafcbd347ab84b136f31fca01dd902593f661691ecd30a4416286ff501c4257baa6765cf356ade3087eb8609af9a44599cfdc20e2f03a6"
                 }
             ]
         },
@@ -77,8 +81,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://deac-fra.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.3/gnuplot-5.4.3.tar.gz",
-                    "sha512": "fc35ab68a992acc8e35402c89cb7704c0efe117ec1fb272739d4378289d6c5a2e8f4b747b339fca916e559453547f2405863fb52038576883f0d5643a7220b5e"
+                    "url": "https://deac-fra.dl.sourceforge.net/project/gnuplot/gnuplot/5.4.8/gnuplot-5.4.8.tar.gz",
+                    "sha512": "3fe0ed783db85d95bdbc13e24ec5dc9bb6b2d85b3571cc87d3c17c94f4463fb6e681376394e0918cf3915f8f53896e6423ce76cb8b6fdbefcd6ec3e1b3b80125"
                 }
             ]
         },
@@ -120,8 +124,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-22.09.0.tar.gz",
-                    "sha512": "778d3f221315f40f09918baaf26a4213dae3154ea19479c5ebf9254ed6c8036ca68f61472fce1d63e72d6c23787a635237c5f85ebc2975254893e6bec112ac3b"
+                    "url": "https://github.com/wxMaxima-developers/wxmaxima/archive/refs/tags/Version-23.05.0.tar.gz",
+                    "sha512": "068e8ca93150b9b4649cbc57e375d526060095da4fff0a7217451febd478aff3be78c86d72d60fcee530a6c2d78c2b5e8c41cb3b5b85c9858813be79e18a83d5"
                 }
             ]
         },
