@@ -1,0 +1,75 @@
+{
+    "app-id": "uk.co.bbcbasic",
+    "branch": "1.35",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "22.08",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--filesystem=home"
+    ],
+    "command": "bbcsdl",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "build-options": {
+        "strip": true,
+        "no-debuginfo": true
+    },
+    "modules": [
+        {
+            "name": "bbcbasic",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/bin/examples",
+                "cp -rv examples/* /app/bin/examples",
+                "chmod -R 755 /app/bin/examples",
+                "mkdir -p /app/bin/lib",
+                "cp -r lib/* /app/bin/lib",
+                "chmod -R 755 /app/bin/lib",
+                "install -Dm755 bbcsdl* /app/bin",
+                "install -Dm755 *.so /app/bin"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.bbcbasic.co.uk/bbcsdl/bbclinux.zip",
+                    "strip-components": 0,
+                    "sha512": "bfa2eaa94a05163a57c81b3f0a5f0c735287e9969e8b73645da07930259bfc0c6ec32707e262676071eec6ce43746d2d19e4263f56a16358513c082e4d3bc8f3"
+                }
+            ]
+        },
+        {
+            "name": "bbcbasic-desktop-integration",
+            "buildsystem": "simple",
+            "build-commands": [
+                "echo Installing desktop integration files"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "uk.co.bbcbasic.png"
+                },
+                {
+                    "type": "file",
+                    "path": "uk.co.bbcbasic.desktop"
+                }
+            ],
+            "post-install": [
+                "install -Dm644 ${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop",
+                "install -Dm644 ${FLATPAK_ID}.png ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.png",
+                "desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+            ]
+
+        }
+    ]
+}

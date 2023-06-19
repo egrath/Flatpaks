@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BBC BASIC
+Icon=uk.co.bbcbasic.png
+Exec=/app/bin/bbcsdl
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=Development
