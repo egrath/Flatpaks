@@ -5,7 +5,7 @@ CONFIGFILE=${XDG_CONFIG_HOME}/digital-options.ini
 # write default configuration file if not existent
 if [ ! -f ${CONFIGFILE} ]; then
     cat << EOF > ${CONFIGFILE}
-user_interface_font=sans-plain-16
+user_interface_font=sans-bold-16
 EOF
 fi
 

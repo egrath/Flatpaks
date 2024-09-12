@@ -1,11 +1,11 @@
 {
   "app-id": "com.github.hneemann.digital",
-  "branch": "0.29",
+  "branch": "0.31",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "22.08",
+  "runtime-version": "23.08",
   "sdk": "org.freedesktop.Sdk",
   "sdk-extensions": [
-      "org.freedesktop.Sdk.Extension.openjdk17"
+      "org.freedesktop.Sdk.Extension.openjdk21"
   ],
   "command": "Digital.sh",
   "finish-args": [
@@ -16,11 +16,22 @@
       "--socket=wayland",
       "--filesystem=home"
   ],
+  "cleanup": [
+      "/include",
+      "/lib/pkgconfig",
+      "/share/aclocal",
+      "/share/man",
+      "*.la", "*.a"
+  ],
+  "build-options": {
+      "strip": true,
+      "no-debuginfo": true
+  },
   "modules": [
         {
             "name" : "openjdk",
             "buildsystem" : "simple",
-            "build-commands" : [ "/usr/lib/sdk/openjdk17/install.sh" ]
+            "build-commands" : [ "/usr/lib/sdk/openjdk21/install.sh" ]
         },      
         {
             "name": "digital",
@@ -38,8 +49,8 @@
             "sources" : [
                 {
                     "type": "archive",
-                    "url": "https://github.com/hneemann/Digital/releases/download/v0.29/Digital.zip",
-                    "sha512": "7d7864bda32fe55e91da156dcdbcd0999aa95d158f272f0d3bd34550ebf8e027e1e7172318733332779ffcaa6b7d520f4449a8ce41a7c3c8817e411f8b82f054"
+                    "url": "https://github.com/hneemann/Digital/releases/download/v0.31/Digital.zip",
+                    "sha512": "e3998e92e47d71caaf34b05be51bb623353806ea58c5018046665903771f88839bb5c2c6ada4ace11ec99ffa091328b414941e070aee343a590a3e566620af50"
                 },
                 {
                     "type": "file",
@@ -64,6 +75,22 @@
                 }
             ]
         },
+		{
+			"name": "ghdl",
+			"buildsystem": "simple",
+			"build-commands": [
+				"echo installing ghdl",
+				"find bin -type f -exec install -D {} /app/{} \\;",
+				"find lib -type f -exec install -D {} /app/{} \\;"
+			],
+			"sources": [
+				{
+					"type": "archive",
+					"url": "https://github.com/ghdl/ghdl/releases/download/v4.1.0/ghdl-gha-ubuntu-22.04-mcode.tgz",
+					"sha512": "bb0f58d3585e84f9b0ab18846772a4bf7693bc0186998982428ae251d623d28544acf62ef0a9d8237e96cf07f91432fb510b356c33c7981df546e320c9b1612f"
+				}
+			]
+		},
         {
             "name": "digital-desktop-integration",
             "buildsystem": "simple",
@@ -81,8 +108,9 @@
                 }
             ],
             "post-install": [
-                "install -Dm644 com.github.hneemann.digital.desktop /app/share/applications/com.github.hneemann.digital.desktop",
-                "install -Dm644 com.github.hneemann.digital.png /app/share/icons/hicolor/256x256/apps/com.github.hneemann.digital.png"
+                "install -Dm644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop",
+                "install -Dm644 ${FLATPAK_ID}.png /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.png",
+		"desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
             ]
 
         }       
