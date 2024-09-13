@@ -24,7 +24,6 @@
       "*.la", "*.a"
   ],
   "build-options": {
-      "strip": true,
       "no-debuginfo": true
   },
   "modules": [
@@ -70,8 +69,9 @@
                     ]
                 },
                 {
-                    "type": "git",
-                    "url": "https://github.com/steveicarus/iverilog.git"
+                    "type": "archive",
+                    "url": "https://github.com/steveicarus/iverilog/archive/refs/tags/v12_0.tar.gz",
+                    "sha512": "a8e112f760903335ef2fbf00529e5fe282b83c1f583c4316373b9410d7fad2a53d5c4adb82dd62491c14a620cb5b1fab117cb0cde638c86b65fe5b7b0dd07152"
                 }
             ]
         },
@@ -105,12 +105,17 @@
                 {
                     "type": "file",
                     "path": "com.github.hneemann.digital.desktop"
+                },
+                {
+                	"type": "file",
+                	"path": "com.github.hneemann.digital.metainfo.xml"
                 }
             ],
             "post-install": [
                 "install -Dm644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop",
                 "install -Dm644 ${FLATPAK_ID}.png /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.png",
-		"desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+		"desktop-file-edit --set-key=Icon --set-value=${FLATPAK_ID} ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop",
+				"install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml"
             ]
 
         }       
